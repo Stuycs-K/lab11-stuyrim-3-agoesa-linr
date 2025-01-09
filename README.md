@@ -21,6 +21,6 @@ Make a clear list of features that work/dont work
 | Adventurer   | **Adventurer Health** | Normal Attack | Special Resource | Support | Special Attack |
 | :----------: | :----------:          | :----------: | :----------: | :----------: | :----------: |
 | Mage         |  20 - 22              | “Firebolt”  3 - 7 dmg  | Aura | "Elemental Surge” Increase damage of allies for 2 turns (1.5x multiplier) |“Inferno Blast”  – Deals 5-6 dmg to all enemies, lighting them on fire for 3 turns (50% chance of dealing 1 damage per turn)|
-| Healer       |  24 - 26              |  “Divine Strike”  1 - 2 dmg  | Elixer | “Angel’s Touch” Heal a single teammate 7 HP |  “Dark Blessing”  – Heal all teammates with a multiplier depending on how much damage is dealt (1x up to 2x) |
+| Healer       |  24 - 26              |  “Divine Strike”  1 - 2 dmg  | Elixir | “Angel’s Touch” Heal a single teammate 7 HP |  “Dark Blessing”  – Heal all teammates with a multiplier depending on how much damage is dealt (1x up to 2x) |
 | Sentinel     |  28 - 30              | “Rock slam”  3 - 4 dmg  | Fortitude | "Guardian’s Shield” Absorbs 50% of damage done to teammates for 2 turns| “Iron Earthquake” -- Stun an enemy for up to three turns (100% for 1, 50% for 2, 25% for 3) |
 
