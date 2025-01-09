@@ -19,4 +19,9 @@ Make a clear list of features that work/dont work
 ## Adventurer Subclasses
 
 replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
+| Adventurer |     HP     | Attack | Special Resource | Support | Special Attack |
+| :----------| :----------| ----------: | -------: | ------: | ------------: |
+| Mage       | 20 - 22    | “Firebolt” 3 - 6  | Aura | "Elemental Surge” Boost damage of allies for 2 turns (1.5 multiplier) |“Inferno Blast”  – Deals 5-6 dmg to all enemies, lighting them on fire for 3 turns (50% chance of dealing 1 damage)|
+| Healer     | 24 - 26    |  “Divine Strike” 1 - 2    | Elixer | “Angel’s Touch” Heal a single teammate 7 HP |  “Dark Blessing”  –Heal all teammates with a multiplier depending on how much damage is dealt (1x up to 3x) |
+| Sentinel   | 28 - 30    | “Rock slam” 3 -4  | Fortitude | "Guardian’s Shield” Absorbs 50% of damage done to teammates for 2 turns| “Iron Earthquake”: Stun an enemy up to three turns(100% for 1, 50% for 2, 25% for 3) |
 
