@@ -49,7 +49,15 @@ public class Healer extends Adventurer {
     int specialAdd = 3;
     setHP(Math.min(getmaxHP(), getHP() + hpAdd));
     setSpecial(Math.min(getSpecialMax(), getSpecial() + specialAdd));
-
     return this + " meditates and restores " + hpAdd + "HP and " + specialAdd + " elixir!";
   }
+
+  public String support(Adventurer other){
+    int hpAdd = 7;
+    int specialAdd = 3;
+    other.setHP(Math.min(other.getmaxHP(), other.getHP() + hpAdd));
+    other.setSpecial(Math.min(other.getSpecialMax(), other.getSpecial() + specialAdd));
+    return this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their" + other.getSpecialName() +  " by " + specialAdd + " elixir!";
+  }
+
 }
