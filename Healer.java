@@ -20,7 +20,7 @@ public class Healer extends Adventurer {
     this("Bob");
   } 
 
-  public String getSpecialname(){
+  public String getSpecialName(){
     return "elixir";
   }
 
@@ -28,7 +28,7 @@ public class Healer extends Adventurer {
     return elixir;
   }
 
-  public int getSpecialmax(){
+  public int getSpecialMax(){
     return elixirMax;
   }
 
@@ -42,5 +42,14 @@ public class Healer extends Adventurer {
     getAllies().get(0).setHP(other.getHP() + (2 * damage));
     getAllies().get(1).setHP(other.getHP() + (2 * damage));
     return this + "uses Divine Strike on" + other + " and dealt " + damage + " points of damage, healing their allies" + 2 * damage +" HP!";
+  }
+
+  public String support(){
+    int hpAdd = 7;
+    int specialAdd = 3;
+    setHP(Math.min(getmaxHP(), getHP() + hpAdd));
+    setSpecial(Math.min(getSpecialMax(), getSpecial() + specialAdd));
+
+    return this + " meditates and restores " + hpAdd + "HP and " + specialAdd + " elixir!";
   }
 }
