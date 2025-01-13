@@ -6,7 +6,9 @@ public class Game{
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
   public static void main(String[] args) {
-    TextBox(10,0,5,24,"Text box attempt to see how this fills the page. ");
+    TextBox(10,0,10,24,"Text box attempt to see how this fills the page. ");
+    System.out.println("\n");
+    System.out.println(createRandomAdventurer());
     // run();
 
   }
@@ -85,7 +87,18 @@ public class Game{
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
-      return new CodeWarrior("Bob"+(int)(Math.random()*100));
+      ArrayList<Adventurer> party = new ArrayList<>();
+      Adventurer Healer = new Healer("Healer");
+      Adventurer CodeWarrior = new CodeWarrior ("CodeWarrior");
+      Adventurer Mage = new Mage("Mage");
+
+      party.add(Healer);
+      party.add(CodeWarrior);
+      party.add(Mage);
+      int rando = (int) (Math.random() * 3);
+      return party.get(rando);
+
+
     }
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
