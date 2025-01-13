@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Healer extends Adventurer {
   private int elixir, elixirMax;
-  
+
   public Healer(String name, int hp, ArrayList<Adventurer> allies){
     super(name, hp, allies);
     elixirMax = 16;
@@ -18,7 +18,7 @@ public class Healer extends Adventurer {
   }
   public Healer(){
     this("Bob");
-  } 
+  }
 
   public String getSpecialName(){
     return "elixir";
@@ -39,8 +39,9 @@ public class Healer extends Adventurer {
   public String attack(Adventurer other){
     int damage = (int)Math.random() * 3 + 1 ;
     other.applyDamage(damage);
-    getAllies().get(0).setHP(other.getHP() + (2 * damage));
-    getAllies().get(1).setHP(other.getHP() + (2 * damage));
+    for (int i = 0; i < getAllies().size(); i++){
+    getAllies().get(i).setHP(other.getHP() + (2 * damage));
+  }
     return this + "uses Divine Strike on" + other + " and dealt " + damage + " points of damage, healing their allies" + 2 * damage +" HP!";
   }
 
@@ -65,9 +66,9 @@ public class Healer extends Adventurer {
         setSpecial(Math.min(0, getSpecial() - 1));
         int hpSacrifice = getHP() / 4;
         setHP(getHP() - hpSacrifice);
-        getAllies().get(0).setHP( (int) Math.min( getAllies().get(1).getmaxHP(),  getAllies().get(1).getHP() +  getAllies().get(1).getmaxHP() /2));
-        getAllies().get(1).setHP( (int) Math.min( getAllies().get(0).getmaxHP(),  getAllies().get(0).getHP() +  getAllies().get(0).getmaxHP() /2));
-
+        for (int i = 0; i < getAllies().size(); i++){
+        getAllies().get(i).setHP((int) Math.min( getAllies().get(i).getmaxHP(),  getAllies().get(i).getHP() +  getAllies().get(i).getmaxHP()/2));
+      }
         int damage = (int) (Math.random() * 3) + 2;
         other.applyDamage(2);
 
