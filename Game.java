@@ -6,6 +6,7 @@ public class Game{
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
   public static void main(String[] args) {
+    drawBackground();
     TextBox(10,0,10,24,"Text box attempt to see how this fills the page. ");
     System.out.println("\n");
     System.out.println(createRandomAdventurer());
@@ -18,6 +19,15 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    for(int i = 0; i < WIDTH; i ++){
+      drawText(Text.colorize(" ",Text.WHITE), 1 + i, 1);
+
+
+
+    }
+
+
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
