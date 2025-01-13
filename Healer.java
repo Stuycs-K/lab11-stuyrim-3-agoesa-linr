@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Healer extends Adventurer {
   private int elixir, elixirMax;
@@ -37,12 +38,14 @@ public class Healer extends Adventurer {
   }
 
   public String attack(Adventurer other){
-    int damage = (int)Math.random() * 3 + 1 ;
+    Random rand1 = new Random();
+    int damage;
+    damage = rand1.nextInt(4) + 1;
     other.applyDamage(damage);
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setHP(other.getHP() + (2 * damage));
   }
-    return this + "uses Divine Strike on" + other + " and dealt " + damage + " points of damage, healing their allies" + 2 * damage +" HP!";
+    return this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + 2 * damage +" HP!";
   }
 
   public String support(){
