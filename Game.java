@@ -57,7 +57,7 @@ public class Game{
             while (finalString.length() < width) {
                 finalString += " ";
             }
-            
+
             drawText(finalString, row + currentHeight, col);
             tempString = "";
 
@@ -163,8 +163,8 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    Adventurer TEMPS = new Healer("TEMPS");
-    enemies.add(TEMPS);
+    // Adventurer TEMPS = new Healer("TEMPS");
+    // enemies.add(TEMPS); ADDED SO THAT RUN RUNS
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -172,8 +172,8 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    Adventurer TEMP = new Healer("TEMP");
-    party.add(TEMP);
+    // Adventurer TEMP = new Healer("TEMP");
+    // party.add(TEMP);ADDED SO THAT RUN RUNS
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
