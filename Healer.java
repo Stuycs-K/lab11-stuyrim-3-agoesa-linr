@@ -36,11 +36,11 @@ public class Healer extends Adventurer {
     elixir = n;
   }
 
-
   public String attack(Adventurer other){
     int damage = (int)Math.random() * 3 + 1 ;
     other.applyDamage(damage);
-    other.setHP(other.getHP() + (2 * damage));
-    return this + "uses Divine Strike on" + other + " and dealt " + damage + " points of damage, healing their allies"
+    getAllies().get(0).setHP(other.getHP() + (2 * damage));
+    getAllies().get(1).setHP(other.getHP() + (2 * damage));
+    return this + "uses Divine Strike on" + other + " and dealt " + damage + " points of damage, healing their allies" + 2 * damage +" HP!";
   }
 }
