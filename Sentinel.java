@@ -16,6 +16,7 @@ public class Sentinel extends Adventurer{
     this("Sentinel");
   }
 
+
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
     return "fortitude";
@@ -33,34 +34,23 @@ public class Sentinel extends Adventurer{
     return fortitudeMax;
   }
 
-  /*Deal 2-7 damage to opponent, restores 2 caffeine*/
+  /*Deals 3 - 4 damage to a target*/
   public String attack(Adventurer other){
-    int damage = (int)(Math.random()*6)+2;
+    int damage = (int)(Math.random()*2) + 3; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
     other.applyDamage(damage);
     restoreSpecial(2);
-    return this + " attacked "+ other + " and dealt "+ damage +
-    " points of damage. They then take a sip of their coffee.";
+    return this + " attacked "+ other + " using Rock Slam and dealt "+ damage +
+    " points of damage.";
   }
 
-  /*Deal 3-12 damage to opponent, only if caffeine is high enough.
-  *Reduces caffeine by 8.
-  */
+  /* Stuns enemy up to 3 turns */
   public String specialAttack(Adventurer other){
-    if(getSpecial() >= 8){
-      setSpecial(getSpecial()-8);
-      int damage = (int)(Math.random()*5+Math.random()*5)+3;
-      other.applyDamage(damage);
-      return this + " used their "+preferredLanguage+
-      " skills to hack the matrix. "+
-      " This glitched out "+other+" dealing "+ damage +" points of damage.";
-    }else{
-      return "Not enough caffeine to use the ultimate code. Instead "+attack(other);
-    }
-
+    // stunning really hard prob extra feature ill do this later
+    return this + " used Iron Earthquake on " + other + " and stunned them for " + turn + " turns";
   }
-  /*Restores 5 special to other*/
+  /*Absorbs damage done to teamates for 2 turns*/
   public String support(Adventurer other){
-    return "Gives a coffee to "+other+" and restores "
+    return this + " used Guardian's Shield!";
     + other.restoreSpecial(5)+" "+other.getSpecialName();
   }
   /*Restores 6 special and 1 hp to self.*/
