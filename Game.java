@@ -6,7 +6,9 @@ public class Game{
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
   public static void main(String[] args) {
-    run();
+    TextBox(10,0,5,24,"Text box attempt to see how this fills the page. ");
+    // run();
+
   }
 
   //Display the borders of your screen that will not change.
@@ -23,6 +25,9 @@ public class Game{
   public static void drawText(String s,int startRow, int startCol){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    Text.go(startRow, startCol);
+    System.out.println(s);
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -39,6 +44,38 @@ public class Game{
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    int currentHeight = 0;
+    String tempString = text;
+
+    while (currentHeight < height) {
+        if (tempString.length() > width) {
+            drawText(tempString.substring(0, width), row + currentHeight, col);
+            tempString = tempString.substring(width);
+        } else {
+
+            String finalString = tempString;
+            while (finalString.length() < width) {
+                finalString += " ";
+            }
+
+            drawText(finalString, row + currentHeight, col);
+            tempString = "";
+
+        }
+
+        currentHeight++;
+
+    }
+
+
+    while (currentHeight < height) {
+        String spaces = ""; // Start with an empty string
+        for (int i = 0; i < width; i++) {
+            spaces += " "; // Add spaces to the blank line
+        }
+        drawText(spaces, row + currentHeight, col);
+        currentHeight++;
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -126,6 +163,8 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    // Adventurer TEMPS = new Healer("TEMPS");
+    // enemies.add(TEMPS); ADDED SO THAT RUN RUNS
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -133,6 +172,8 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    // Adventurer TEMP = new Healer("TEMP");
+    // party.add(TEMP);ADDED SO THAT RUN RUNS
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;

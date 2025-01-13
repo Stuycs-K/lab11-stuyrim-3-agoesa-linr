@@ -1,7 +1,10 @@
-import java.util.Random;
+import java.util.ArrayList;
+
 public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
+  private ArrayList<Adventurer> allies;
+
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -18,11 +21,12 @@ public abstract class Adventurer{
 
   //concrete method written using abstract methods.
   //refill special resource by amount, but only up to at most getSpecialMax()
-  public void restoreSpecial(){
-    if( getSpecialMax() == getSpecial()){
-      return;
+  public int restoreSpecial(int n){
+    if( n > getSpecialMax() - getSpecial()){
+      n = getSpecialMax() - getSpecial();
     }
-    setSpecial(getSpecial() + 1);
+    setSpecial(getSpecial()+n);
+    return n;
   }
 
   /*
@@ -46,6 +50,7 @@ public abstract class Adventurer{
 
   //hurt or hinder the target adventurer, consume some special resource
   public abstract String specialAttack(Adventurer other);
+  
 
   /*
   standard methods
@@ -70,6 +75,13 @@ public abstract class Adventurer{
     this.maxHP = hp;
   }
 
+  public Adventurer(String name, int hp, ArrayList<Adventurer> allies){
+    this.name = name;
+    this.HP = hp;
+    this.maxHP = hp;
+    this.allies = allies;
+  }
+
   //toString method
   public String toString(){
     return this.getName();
@@ -89,6 +101,10 @@ public abstract class Adventurer{
   }
   public void setmaxHP(int newMax){
     maxHP = newMax;
+  }
+
+  public ArrayList<Adventurer> getAllies(){
+    return allies;
   }
 
   //Set Methods
