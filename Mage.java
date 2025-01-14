@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 
-public class Healer extends Adventurer {
+public class Mage extends Adventurer {
   private int elixir, elixirMax;
 
-  public Healer(String name, int hp, ArrayList<Adventurer> allies){
+  public Mage(String name, int hp, ArrayList<Adventurer> allies){
     super(name, hp, allies);
     elixirMax = 16;
     elixir = elixirMax / 2;
   }
 
-  public Healer(String name, ArrayList<Adventurer> allies){
+  public Mage(String name, ArrayList<Adventurer> allies){
     this(name, (int) Math.random() * 3 + 24, allies);
   }
 
-  public Healer(String name){
+  public Mage(String name){
     this(name, (int) Math.random() * 3 + 24, new ArrayList<>());
   }
-  public Healer(){
+  public Mage(){
     this("Bob");
   }
 

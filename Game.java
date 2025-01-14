@@ -7,9 +7,9 @@ public class Game{
 
   public static void main(String[] args) {
     drawBackground();
-    TextBox(10,0,10,24,"Text box attempt to see how this fills the page. ");
-    System.out.println("\n");
-    System.out.println(createRandomAdventurer());
+    // TextBox(10,0,10,24,"Text box attempt to see how this fills the page. ");
+    // System.out.println("\n");
+    // System.out.println(createRandomAdventurer());
     // run();
 
   }
@@ -19,8 +19,11 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    for(int i = 0; i < WIDTH; i ++){
-      drawText(Text.colorize(" ",Text.WHITE), 1 + i, 1);
+    for(int a = 0; a < HEIGHT; a++){
+
+      for(int i = 0; i < WIDTH; i++){
+        drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
+      }
 
 
 
