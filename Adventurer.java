@@ -4,7 +4,11 @@ public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
   private ArrayList<Adventurer> allies;
+<<<<<<< HEAD
   private int stun;
+=======
+  private ArrayList<Adventurer> enemies;
+>>>>>>> 4a5be8870edd4d26d8c4b80c6bf4f5d7736a9820
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -83,6 +87,14 @@ public abstract class Adventurer{
     this.allies = allies;
   }
 
+  public Adventurer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
+    this.name = name;
+    this.HP = hp;
+    this.maxHP = hp;
+    this.allies = allies;
+    this.enemies = enemies;
+  }
+
   //toString method
   public String toString(){
     return this.getName();
@@ -106,6 +118,20 @@ public abstract class Adventurer{
 
   public ArrayList<Adventurer> getAllies(){
     return allies;
+  }
+
+  public ArrayList<Adventurer> getEnemies(){
+    return enemies;
+  }
+
+  public void addFriends(Adventurer friend){
+    getAllies().add(friend);
+    System.out.println("ally gained!");
+  }
+
+  public void addFoe(Adventurer foe){
+    getEnemies().add(foe);
+    System.out.println("foe gained!");
   }
 
   //Set Methods
