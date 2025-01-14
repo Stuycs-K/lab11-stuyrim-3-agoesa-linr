@@ -19,10 +19,24 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    for(int a = 0; a < HEIGHT; a++){
+    for(int a = 1; a < HEIGHT+1; a++){
 
-      for(int i = 0; i < WIDTH; i++){
-        drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
+      for(int i = 1; i < WIDTH+1; i++){
+        if(a == 1 || a == HEIGHT){
+          drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
+        }
+        else{
+          drawText(Text.colorize(" ",BORDER_COLOR), a, i);
+
+        }
+        if(i == 1 || i == WIDTH){
+          drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
+        }
+
+
+
+
+
       }
 
 
@@ -127,6 +141,7 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
+
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
 
