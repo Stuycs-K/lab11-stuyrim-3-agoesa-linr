@@ -4,6 +4,7 @@ public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
   private ArrayList<Adventurer> allies;
+  private int stun;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -50,7 +51,7 @@ public abstract class Adventurer{
 
   //hurt or hinder the target adventurer, consume some special resource
   public abstract String specialAttack(Adventurer other);
-  
+
 
   /*
   standard methods
