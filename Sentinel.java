@@ -45,7 +45,7 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
     int damage = (int)(Math.random()*2) + 3; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
     other.applyDamage(damage);
     restoreSpecial(2);
-    return this + " attacked "+ other + " using Rock Slam and dealt "+ damage +
+    return this + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
     " points of damage.";
   }
 
@@ -64,18 +64,16 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
       turns = 1;
       other.setStun(turns);
     }
-    return this + " used Iron Earthquake on " + other + " and stunned them for " + turns + " turns";
+    return this + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
   }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(Adventurer other){
     return this + " used Guardian's Shield!";
     + other.restoreSpecial(5)+" "+other.getSpecialName();
   }
-  /*Restores 6 special and 1 hp to self.*/
+  /*Absorbs damage done to teamates for 2 turns*/
   public String support(){
-    int hp = 1;
-    setHP(getHP()+hp);
-    return this+" drinks a coffee to restores "+restoreSpecial(6)+" "
-    + getSpecialName()+ " and "+hp+" HP";
+    return this + " used Guardian's Shield!";
+    + other.restoreSpecial(5)+" "+other.getSpecialName();
   }
 }
