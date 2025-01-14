@@ -7,6 +7,13 @@ public class Game{
 
   public static void main(String[] args) {
     drawBackground();
+    ArrayList<Adventurer> party = new ArrayList<>();
+    for(int i = 0; i < 3; i++){
+      party.add(createRandomAdventurer());
+    }
+    System.out.println(party);
+    drawParty(party, 2);
+    drawText(" ", 81, 0);
     // TextBox(10,0,10,24,"Text box attempt to see how this fills the page. ");
     // System.out.println("\n");
     // System.out.println(createRandomAdventurer());
@@ -22,7 +29,7 @@ public class Game{
     for(int a = 1; a < HEIGHT+1; a++){
 
       for(int i = 1; i < WIDTH+1; i++){
-        if(a == 1 || a == HEIGHT){
+        if(a == 1 || a == 6|| a == HEIGHT){
           drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
         }
         else{
@@ -141,6 +148,11 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
+      for(int i = 0; i < party.size(); i ++){
+        drawText((party.get(i)).getName(), startRow, 10 + (i * (WIDTH/party.size())));
+        drawText("HP: " + (party.get(i)).getHP(), startRow + 1, 10 + (i * (WIDTH/party.size())));
+        drawText((party.get(i)).getSpecialName() + " : " + (party.get(i)).getSpecial(), startRow + 2, 10 + (i * (WIDTH/party.size())));
+      }
 
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
