@@ -4,6 +4,8 @@ public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
   private ArrayList<Adventurer> allies;
+  private ArrayList<Adventurer> enemies;
+  private int stun = 0; 
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -50,7 +52,7 @@ public abstract class Adventurer{
 
   //hurt or hinder the target adventurer, consume some special resource
   public abstract String specialAttack(Adventurer other);
-  
+
 
   /*
   standard methods
@@ -82,6 +84,14 @@ public abstract class Adventurer{
     this.allies = allies;
   }
 
+  public Adventurer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
+    this.name = name;
+    this.HP = hp;
+    this.maxHP = hp;
+    this.allies = allies;
+    this.enemies = enemies;
+  }
+
   //toString method
   public String toString(){
     return this.getName();
@@ -107,6 +117,20 @@ public abstract class Adventurer{
     return allies;
   }
 
+  public ArrayList<Adventurer> getEnemies(){
+    return enemies;
+  }
+
+  public void addFriends(Adventurer friend){
+    getAllies().add(friend);
+    System.out.println("ally gained!");
+  }
+
+  public void addFoe(Adventurer foe){
+    getEnemies().add(foe);
+    System.out.println("foe gained!");
+  }
+
   //Set Methods
   public void setHP(int health){
     this.HP = health;
@@ -114,5 +138,14 @@ public abstract class Adventurer{
 
   public void setName(String s){
     this.name = s;
+  }
+  public int getStun(){
+    return this.stun;
+  }
+  public void setStun(int n){
+    this.stun = n;
+  }
+  public void getStun(){
+    return this.stun;
   }
 }
