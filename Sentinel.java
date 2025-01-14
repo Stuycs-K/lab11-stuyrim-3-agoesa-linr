@@ -1,19 +1,25 @@
 import java.util.*;
 public class Sentinel extends Adventurer{
-  int fortitude, fortitudeMax;
+  private int fortitude;
+  private int fortitudeMax = 10; // change the number
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public static int randomHP(){
     return (int) (Math.random() * 3) + 28;
   }
 
-
+public Sentinel (String name, ArrayList<Adventurer> allies){
+  super(name, allies); // fix the constructors because I got no int hp
+  this.fortitude = this.fortitudeMax;
+}
   public Sentinel(String name){
     super(name,randomHP());
+    this.fortitude = this.fortitudeMax;
   }
 
   public Sentinel(){
     this("Sentinel");
+    this.fortitude = this.fortitudeMax;
   }
 
 
@@ -45,8 +51,20 @@ public class Sentinel extends Adventurer{
 
   /* Stuns enemy up to 3 turns */
   public String specialAttack(Adventurer other){
-    // stunning really hard prob extra feature ill do this later
-    return this + " used Iron Earthquake on " + other + " and stunned them for " + turn + " turns";
+    int turns = Math.random();
+    if (turns > 0.75){
+      turns = 3;
+      other.setStun(turns);
+    }
+    else if (turns > 0.25){
+      turns = 2;
+      other.setStun(turns);
+    }
+    else {
+      turns = 1;
+      other.setStun(turns);
+    }
+    return this + " used Iron Earthquake on " + other + " and stunned them for " + turns + " turns";
   }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(Adventurer other){
