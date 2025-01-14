@@ -74,6 +74,6 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(){
     return this + " used Guardian's Shield!";
-    + other.restoreSpecial(5)+" "+other.getSpecialName();
-  }
+    + other.restoreSpecial(5)+" "+other.getSpecialName(); // fix this also passive heal?
+  }// fix constructors, supports, the debuff in adventuerer.
 }
