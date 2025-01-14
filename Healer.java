@@ -4,18 +4,18 @@ import java.util.Random;
 public class Healer extends Adventurer {
   private int elixir, elixirMax;
 
-  public Healer(String name, int hp, ArrayList<Adventurer> allies){
-    super(name, hp, allies);
+  public Healer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
+    super(name, hp, allies, enemies);
     elixirMax = 16;
     elixir = elixirMax / 2;
   }
 
   public Healer(String name, ArrayList<Adventurer> allies){
-    this(name, (int) (Math.random() * 3) + 24, allies);
+    this(name, (int) (Math.random() * 3) + 24, allies, new ArrayList<Adventurer>());
   }
 
   public Healer(String name){
-    this(name, (int) (Math.random() * 3) + 24, new ArrayList<>());
+    this(name, new ArrayList<Adventurer>());
   }
   public Healer(){
     this("Bob");
