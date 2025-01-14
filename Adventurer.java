@@ -5,7 +5,7 @@ public abstract class Adventurer{
   private int HP,maxHP;
   private ArrayList<Adventurer> allies;
   private ArrayList<Adventurer> enemies;
-  private int stun = 0; 
+  private int stun = 0;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -145,7 +145,5 @@ public abstract class Adventurer{
   public void setStun(int n){
     this.stun = n;
   }
-  public void getStun(){
-    return this.stun;
-  }
+
 }
