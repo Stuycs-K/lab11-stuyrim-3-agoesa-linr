@@ -122,12 +122,12 @@ public abstract class Adventurer{
 
   public void addFriends(Adventurer friend){
     getAllies().add(friend);
-    System.out.println("ally gained!")
+    System.out.println("ally gained!");
   }
 
   public void addFoe(Adventurer foe){
     getEnemies().add(foe);
-    System.out.println("foe gained!")
+    System.out.println("foe gained!");
   }
 
   //Set Methods
