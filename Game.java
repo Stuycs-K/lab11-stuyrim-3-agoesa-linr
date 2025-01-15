@@ -6,17 +6,8 @@ public class Game{
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
   public static void main(String[] args) {
-    drawBackground();
-    ArrayList<Adventurer> party = new ArrayList<>();
-    for(int i = 0; i < 3; i++){
-      party.add(createRandomAdventurer());
-    }
-    System.out.println(party);
-    drawParty(party, 2);
-    drawText(" ", 81, 0);
-    System.out.println("\n");
-    System.out.println(createRandomAdventurer());
-    System.out.println(colorByPercent(10, 20));
+    drawScreen();
+
     // run();
 
   }
@@ -29,10 +20,10 @@ public class Game{
     for(int a = 1; a <= HEIGHT; a++){
 
       for(int i = 1; i <= WIDTH; i++){
-        if(a == 1 || a == 6|| a == HEIGHT){
+        if(a == 1 || a == 6|| a == 11||  a == HEIGHT){
           drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
         }
-        if(i == 1 || i == WIDTH){
+        if(i == 1 || (i == 47 && a > 11) || i == WIDTH){
           drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
         }
       }
@@ -170,12 +161,29 @@ public class Game{
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
   public static void drawScreen(){
+    ArrayList<Adventurer> party = new ArrayList<>();
+    ArrayList<Adventurer> enemies = new ArrayList<>();
+    for(int i = 0; i < 3; i++){
+      party.add(createRandomAdventurer());
+    }
+    for(int i = 0; i < 3; i++){
+      enemies.add(createRandomAdventurer());
+    }
+
+
+
 
     drawBackground();
 
     //draw player party
+    drawParty(party, 2);
 
     //draw enemy party
+    drawParty(enemies, 7);
+
+    TextBox(12,2,40,15, "This is where user input will go");
+
+
 
   }
 

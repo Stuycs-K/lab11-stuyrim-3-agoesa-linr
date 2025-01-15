@@ -145,10 +145,7 @@ public abstract class Adventurer{
   public void setStun(int n){
     this.stun = n;
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> 673291d305596a0a5cfe5506e447c14ac64a99d6
   public void debuff(){
     // actually do the stuff of the debuffs. The prior commands are to tell you the info about it.This is where we actually do it.
   }
