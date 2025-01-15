@@ -7,7 +7,7 @@ public class Healer extends Adventurer {
   public Healer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies, enemies);
     elixirMax = 16;
-    elixir = elixirMax / 2;
+    elixir = elixirMax;
   }
 
   public Healer(String name, ArrayList<Adventurer> allies){
@@ -66,7 +66,7 @@ public class Healer extends Adventurer {
 
     public String specialAttack(Adventurer other){
       if (getSpecial() > 10){
-        setSpecial(Math.min(0, getSpecial() - 1));
+        setSpecial(Math.max(0, getSpecial() - 10));
         int hpSacrifice = getHP() / 4;
         setHP(getHP() - hpSacrifice);
         for (int i = 0; i < getAllies().size(); i++){
@@ -75,7 +75,7 @@ public class Healer extends Adventurer {
         int damage = (int) (Math.random() * 3) + 2;
         other.applyDamage(2);
 
-        return this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "points of damage to " + other + "!";
+        return this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + " points of damage to " + other + "!";
       }
       else {
         return "Not enough elixir!";
