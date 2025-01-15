@@ -14,9 +14,9 @@ public class Game{
     System.out.println(party);
     drawParty(party, 2);
     drawText(" ", 81, 0);
-    // TextBox(10,0,10,24,"Text box attempt to see how this fills the page. ");
-    // System.out.println("\n");
-    // System.out.println(createRandomAdventurer());
+    System.out.println("\n");
+    System.out.println(createRandomAdventurer());
+    System.out.println(colorByPercent(10, 20));
     // run();
 
   }
@@ -26,32 +26,17 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    for(int a = 1; a < HEIGHT+1; a++){
+    for(int a = 1; a <= HEIGHT; a++){
 
-      for(int i = 1; i < WIDTH+1; i++){
+      for(int i = 1; i <= WIDTH; i++){
         if(a == 1 || a == 6|| a == HEIGHT){
           drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
-        }
-        else{
-          drawText(Text.colorize(" ",BORDER_COLOR), a, i);
-
         }
         if(i == 1 || i == WIDTH){
           drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
         }
-
-
-
-
-
       }
-
-
-
     }
-
-
-
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -150,7 +135,7 @@ public class Game{
       //YOUR CODE HERE
       for(int i = 0; i < party.size(); i ++){
         drawText((party.get(i)).getName(), startRow, 10 + (i * (WIDTH/party.size())));
-        drawText("HP: " + colorByPercent((party.get(i)).getHP(), (party.get(i)).getmaxHP()), startRow + 1, 10 + (i * (WIDTH/party.size())));
+        drawText("HP: " + colorByPercent((party.get(i)).getHP()-20, (party.get(i)).getmaxHP()), startRow + 1, 10 + (i * (WIDTH/party.size())));
         drawText((party.get(i)).getSpecialName() + " : " + (party.get(i)).getSpecial(), startRow + 2, 10 + (i * (WIDTH/party.size())));
       }
 
@@ -162,13 +147,13 @@ public class Game{
   public static String colorByPercent(int hp, int maxHP){
     String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
     if((double) hp / maxHP < 0.25){
-      Text.colorize(output, Text.RED);
+      output = Text.colorize(output, Text.RED);
     }
-    if((double) hp / maxHP < 0.75){
-      Text.colorize(output, Text.YELLOW);
+    else if((double) hp / maxHP < 0.75){
+      output = Text.colorize(output, Text.YELLOW);
     }
     else{
-      Text.colorize(output, Text.WHITE);
+      output = Text.colorize(output, Text.WHITE);
     }
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
