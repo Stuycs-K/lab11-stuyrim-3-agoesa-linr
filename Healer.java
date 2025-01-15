@@ -4,18 +4,18 @@ import java.util.Random;
 public class Healer extends Adventurer {
   private int elixir, elixirMax;
 
-  public Healer(String name, int hp, ArrayList<Adventurer> allies){
-    super(name, hp, allies);
+  public Healer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
+    super(name, hp, allies, enemies);
     elixirMax = 16;
     elixir = elixirMax / 2;
   }
 
   public Healer(String name, ArrayList<Adventurer> allies){
-    this(name, (int) Math.random() * 3 + 24, allies);
+    this(name, (int) (Math.random() * 3) + 24, allies, new ArrayList<Adventurer>());
   }
 
   public Healer(String name){
-    this(name, (int) Math.random() * 3 + 24, new ArrayList<>());
+    this(name, new ArrayList<Adventurer>());
   }
   public Healer(){
     this("Bob");
@@ -40,10 +40,10 @@ public class Healer extends Adventurer {
   public String attack(Adventurer other){
     Random rand1 = new Random();
     int damage;
-    damage = rand1.nextInt(4) + 1;
+    damage = rand1.nextInt(3) + 1;
     other.applyDamage(damage);
     for (int i = 0; i < getAllies().size(); i++){
-    getAllies().get(i).setHP(other.getHP() + (2 * damage));
+    getAllies().get(i).setHP(Math.min(getAllies().get(i).getmaxHP(), getAllies().get(i).getHP() + (2 * damage)));
   }
     return this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + 2 * damage +" HP!";
   }
