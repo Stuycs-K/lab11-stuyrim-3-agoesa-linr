@@ -2,39 +2,39 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Healer extends Adventurer {
-  private int aura, auraMax;
+  private int elixir, elixirMax;
 
   public Healer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies, enemies);
-    aura = 16;
-    auraMax = elixirMax;
+    elixir = 16;
+    elixirMax = elixirMax;
   }
 
   public Healer(String name, ArrayList<Adventurer> allies){
-    this(name, (int) (Math.random() * 3) + 20, allies, new ArrayList<Adventurer>());
+    this(name, (int) (Math.random() * 3) + 24, allies, new ArrayList<Adventurer>());
   }
 
   public Healer(String name){
     this(name, new ArrayList<Adventurer>());
   }
   public Healer(){
-    this("Mark");
+    this("bob");
   }
 
   public String getSpecialName(){
-    return "aura";
+    return "elixir";
   }
 
   public int getSpecial(){
-    return aura;
+    return elixir;
   }
 
   public int getSpecialMax(){
-    return auraMax;
+    return elixirMax;
   }
 
   public void setSpecial(int n){
-    aura = n;
+    elixir = n;
   }
 
   public String attack(Adventurer other){
@@ -44,7 +44,7 @@ public class Healer extends Adventurer {
     other.applyDamage(damage);
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setHP(Math.min(getAllies().get(i).getmaxHP(), getAllies().get(i).getHP() + (damage)));
-    setSpecial(Math.min(getSpecialMax(), getSpecial() + 3));
+    restoreSpecial(3);
 
   }
     return this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + 2 * damage +" HP! " + this + " gains 3 elixir!";
@@ -54,7 +54,7 @@ public class Healer extends Adventurer {
     int hpAdd = 7;
     int specialAdd = 3;
     setHP(Math.min(getmaxHP(), getHP() + hpAdd));
-    setSpecial(Math.min(getSpecialMax(), getSpecial() + specialAdd));
+    restoreSpecial(3);
     return this + " meditates and restores " + hpAdd + "HP and " + specialAdd + " elixir!";
   }
 
@@ -62,8 +62,7 @@ public class Healer extends Adventurer {
     int hpAdd = 7;
     int specialAdd = 3;
     other.setHP(Math.min(other.getmaxHP(), other.getHP() + hpAdd));
-    other.setSpecial(Math.min(other.getSpecialMax(), other.getSpecial() + specialAdd));
-    setSpecial(Math.min(getSpecialMax(), getSpecial() + 1));
+    other.restoreSpecial(3);
     return this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their" + other.getSpecialName() +  " by " + specialAdd + " elixir!";
   }
 

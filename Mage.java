@@ -1,47 +1,52 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Mage extends Adventurer {
-  private int elixir, elixirMax;
+  private  int aura, auraMax;
 
-  public Mage(String name, int hp, ArrayList<Adventurer> allies){
+  public Mage(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies);
-    elixirMax = 16;
-    elixir = elixirMax / 2;
+    auraMax = 16;
+    aura = auraMax / 2;healing their allies" + 2 * damage +" HP!
   }
 
-  public Mage(String name, ArrayList<Adventurer> allies){
-    this(name, (int) Math.random() * 3 + 24, allies);
+  public Mage(String name, ArrayList<Adventurer> allies){healing their allies" + 2 * damage +" HP!
+    this(name, (int) Math.random() * 3 + 20, allies, new ArrayList<Adventurer>());
   }
 
   public Mage(String name){
-    this(name, (int) Math.random() * 3 + 24, new ArrayList<>());
+    this(name, new ArrayList<Adventurer>());
   }
   public Mage(){
-    this("Bob");
+    this("mark");
   }
 
   public String getSpecialName(){
-    return "elixir";
+    return "aura";
   }
 
   public int getSpecial(){
-    return elixir;
+    return aura;
   }
 
   public int getSpecialMax(){
-    return elixirMax;
+    return auraMax;
   }
 
   public void setSpecial(int n){
-    elixir = n;
+    aura = n;
   }
 
   public String attack(Adventurer other){
-    int damage = (int)Math.random() * 3 + 1 ;
+    int damage = (int) (Math.random() * 5) +  3 ;
     other.applyDamage(damage);
-    getAllies().get(0).setHP(other.getHP() + (2 * damage));
-    getAllies().get(1).setHP(other.getHP() + (2 * damage));
-    return this + "uses Divine Strike on" + other + " and dealt " + damage + " points of damage, healing their allies" + 2 * damage +" HP!";
+    Random rand1 = new Random();
+    if (rand1.nextBoolean()){
+      return this + "uses Lightning Bolt on" + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage!";
+    }
+    else {
+      return this + "uses Lightning Bolt on" + other + " and dealt " + damage + " points of damage. ";
+    }
   }
 
   public String support(){
