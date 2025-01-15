@@ -6,6 +6,7 @@ public abstract class Adventurer{
   private ArrayList<Adventurer> allies;
   private ArrayList<Adventurer> enemies;
   private int stun = 0;
+  private int protect = 0;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -59,7 +60,13 @@ public abstract class Adventurer{
   */
 
   public void applyDamage(int amount){
-    this.HP -= amount;
+    if (this.getProtect() > 0){
+      this.setProtect(this.getProtect() - 1);
+      this.HP -= amount * 0.25;
+    }
+    else{
+      this.HP -= amount;  
+  }
   }
 
   //You did it wrong if this happens.
@@ -145,10 +152,14 @@ public abstract class Adventurer{
   public void setStun(int n){
     this.stun = n;
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> 673291d305596a0a5cfe5506e447c14ac64a99d6
+  public int getProtect(){
+    return this.protect;
+  }
+  public void setProtect(int n){
+    this.protect = n;
+  }
+
   public void debuff(){
     // actually do the stuff of the debuffs. The prior commands are to tell you the info about it.This is where we actually do it.
   }
