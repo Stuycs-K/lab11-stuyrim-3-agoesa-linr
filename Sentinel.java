@@ -45,7 +45,7 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
     int damage = (int)(Math.random()*2) + 3; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
     other.applyDamage(damage);
     restoreSpecial(2);
-    return this + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
+    return this.getName() + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
     " points of damage.";
   }
 
@@ -54,26 +54,28 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
     int turns = Math.random();
     if (turns > 0.75){
       turns = 3;
-      other.setStun(turns);
+      other.setStun(other.getStun() + turns);
     }
     else if (turns > 0.25){
       turns = 2;
-      other.setStun(turns);
+      other.setStun(other.getStun() + turns);
     }
     else {
       turns = 1;
-      other.setStun(turns);
+      other.setStun(other.getStun() + turns);
     }
-    return this + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
+    return this.getName() + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
   }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(Adventurer other){
-    return this + " used Guardian's Shield!";
-    + other.restoreSpecial(5)+" "+other.getSpecialName();
+    other.setProtect(other.getProtect() + 2);
+    return this.getName() + " used Guardian's Shield on " + other.getName() + "!";
+
   }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(){
-    return this + " used Guardian's Shield!";
-    + other.restoreSpecial(5)+" "+other.getSpecialName(); // fix this also passive heal?
-  }// fix constructors, supports, the debuff in adventuerer.
+    this.setProtect(this.getProtect() + 2);
+    return this.getName() + " used Guardian's Shield on" + this.getName() + "!";
+
+  }// fix constructors, the debuff in adventuerer.
 }
