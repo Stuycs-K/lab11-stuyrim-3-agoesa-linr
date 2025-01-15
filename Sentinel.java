@@ -44,13 +44,14 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*2) + 3; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
     other.applyDamage(damage);
-    restoreSpecial(2);
+    this.restoreSpecial(3);
     return this.getName() + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
     " points of damage.";
   }
 
   /* Stuns enemy up to 3 turns */
   public String specialAttack(Adventurer other){
+    if (this.getSpecial - 10 >= 0){
     int turns = Math.random();
     if (turns > 0.75){
       turns = 3;
@@ -66,15 +67,21 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
     }
     return this.getName() + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
   }
+    else {
+      return this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10";
+    }
+}
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(Adventurer other){
     other.setProtect(other.getProtect() + 2);
+    this.restoreSpecial(2);
     return this.getName() + " used Guardian's Shield on " + other.getName() + "!";
 
   }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(){
     this.setProtect(this.getProtect() + 2);
+    this.restoreSpecial(2);
     return this.getName() + " used Guardian's Shield on" + this.getName() + "!";
 
   }// fix constructors, the debuff in adventuerer.
