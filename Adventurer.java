@@ -153,6 +153,8 @@ public abstract class Adventurer{
     this.stun = n;
   }
 
+<<<<<<< HEAD
+=======
   public int getProtect(){
     return this.protect;
   }
@@ -160,6 +162,7 @@ public abstract class Adventurer{
     this.protect = n;
   }
 
+>>>>>>> 0610e4eddf7ce985f767433ec63a631af1913462
   public void debuff(){
     // actually do the stuff of the debuffs. The prior commands are to tell you the info about it.This is where we actually do it.
   }
