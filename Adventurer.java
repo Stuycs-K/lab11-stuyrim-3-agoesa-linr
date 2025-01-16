@@ -161,6 +161,11 @@ public abstract class Adventurer{
   public void setProtect(int n){
     this.protect = n;
   }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ce49abffb1898e84e74388c3a80b0ced5769a08a
   public void debuff(){
     // actually do the stuff of the debuffs. The prior commands are to tell you the info about it.This is where we actually do it.
   }
