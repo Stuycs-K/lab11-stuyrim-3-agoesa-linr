@@ -7,6 +7,7 @@ public abstract class Adventurer{
   private ArrayList<Adventurer> enemies;
   private int stun = 0;
   private int protect = 0;
+  private bool damageBoost = false;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -61,6 +62,9 @@ public abstract class Adventurer{
   */
 
   public void applyDamage(int amount){
+    if (damageBoost) {
+      this.HP -= amount * 1.5;
+    }
     if (this.getProtect() > 0){
       this.setProtect(this.getProtect() - 1);
       this.HP -= amount * 0.25;
@@ -167,5 +171,9 @@ public abstract class Adventurer{
 
   public void debuff(){
     // actually do the stuff of the debuffs. The prior commands are to tell you the info about it.This is where we actually do it.
+  }
+
+  publix void setDamageBoost(boolean bool){
+    damageBoost = bool;
   }
 }

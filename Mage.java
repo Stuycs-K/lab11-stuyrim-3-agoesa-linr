@@ -38,32 +38,28 @@ public class Mage extends Adventurer {
   }
 
   public String attack(Adventurer other){
+    restoreSpecial(3);
     int damage = (int) (Math.random() * 5) +  3 ;
     other.applyDamage(damage);
     Random rand1 = new Random();
     if (rand1.nextBoolean()){
       other.applyDamage(3);
-      return this + " uses Lightning Bolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage!";
+      return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage! Restores 2 aura.";
     }
     else {
-      return this + " uses Lightning Bolt on " + other + " and dealt " + damage + " points of damage. ";
+      return this + " uses Thunderbo+lt on " + other + " and dealt " + damage + " points of damage. Restores 2 aura. ";
     }
   }
 
   public String support(){
-    int hpAdd = 7;
-    int specialAdd = 3;
-    setHP(Math.min(getmaxHP(), getHP() + hpAdd));
-    setSpecial(Math.min(getSpecialMax(), getSpecial() + specialAdd));
-    return this + " meditates and restores " + hpAdd + "HP and " + specialAdd + " elixir!";
+    for (int i = 0; i < getAllies().size(); i++){
+    getAllies().get(i).setDamageBoost(true);
+  }
+    return this + " uses Elemental Surge, giving their teammates a damage boost! Restores 2 aura.";
   }
 
   public String support(Adventurer other){
-    int hpAdd = 7;
-    int specialAdd = 3;
-    other.setHP(Math.min(other.getmaxHP(), other.getHP() + hpAdd));
-    other.setSpecial(Math.min(other.getSpecialMax(), other.getSpecial() + specialAdd));
-    return this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their" + other.getSpecialName() +  " by " + specialAdd + " elixir!";
+    support();
   }
 
     public String specialAttack(Adventurer other){
