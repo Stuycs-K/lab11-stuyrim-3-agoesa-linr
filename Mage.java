@@ -42,10 +42,11 @@ public class Mage extends Adventurer {
     other.applyDamage(damage);
     Random rand1 = new Random();
     if (rand1.nextBoolean()){
-      return this + "uses Lightning Bolt on" + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage!";
+      other.applyDamage(3);
+      return this + " uses Lightning Bolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage!";
     }
     else {
-      return this + "uses Lightning Bolt on" + other + " and dealt " + damage + " points of damage. ";
+      return this + " uses Lightning Bolt on " + other + " and dealt " + damage + " points of damage. ";
     }
   }
 
