@@ -6,9 +6,9 @@ public class Game{
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
   public static void main(String[] args) {
-    drawScreen();
+    // drawScreen();
 
-    // run();
+    run();
 
   }
 
@@ -180,8 +180,9 @@ public class Game{
 
     //draw enemy party
     drawParty(enemies, 7);
+    Scanner in = new Scanner(System.in);
 
-    TextBox(12,2,40,15, "This is where user input will go");
+    userInput(in);
 
 
 
@@ -189,8 +190,10 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
+      Text.go(12,2);
 
       //show cursor
+      Text.showCursor();
 
       String input = in.nextLine();
 
@@ -218,8 +221,8 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    // Adventurer TEMPS = new Healer("TEMPS");
-    // enemies.add(TEMPS); ADDED SO THAT RUN RUNS
+    Adventurer TEMPS = new Healer("TEMPS");
+    enemies.add(TEMPS);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -227,8 +230,8 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    // Adventurer TEMP = new Healer("TEMP");
-    // party.add(TEMP);ADDED SO THAT RUN RUNS
+    Adventurer TEMP = new Healer("TEMP");
+    party.add(TEMP);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -291,7 +294,7 @@ public class Game{
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see monster's turn";
+          String prompt = "press enter to see mo                         nster's turn";
 
           partyTurn = false;
           whichOpponent = 0;

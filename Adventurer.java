@@ -168,6 +168,7 @@ public abstract class Adventurer{
     this.protect = n;
   }
 
+<<<<<<< HEAD
 
   public void debuff(){
     // actually do the stuff of the debuffs. The prior commands are to tell you the info about it.This is where we actually do it.
@@ -176,4 +177,12 @@ public abstract class Adventurer{
   publix void setDamageBoost(boolean bool){
     damageBoost = bool;
   }
+=======
+// enemies when stunned can't do anything
+  public void ifStunned(){
+    if (getStun() > 0){
+      setStun(getStun() - 1);
+      // make it skip a turn. THIS IS NOT DONE YET!!!!!
+    }
+>>>>>>> 875b3670b65cca8cf958c70d84aa49b0aa89bb91
 }
