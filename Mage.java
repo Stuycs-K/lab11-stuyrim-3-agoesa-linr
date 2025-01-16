@@ -7,10 +7,10 @@ public class Mage extends Adventurer {
   public Mage(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies);
     auraMax = 16;
-    aura = auraMax / 2;healing their allies" + 2 * damage +" HP!
+    aura = auraMax / 2;
   }
 
-  public Mage(String name, ArrayList<Adventurer> allies){healing their allies" + 2 * damage +" HP!
+  public Mage(String name, ArrayList<Adventurer> allies){
     this(name, (int) Math.random() * 3 + 20, allies, new ArrayList<Adventurer>());
   }
 
