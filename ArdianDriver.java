@@ -21,6 +21,8 @@ public class ArdianDriver {
     System.out.println(healer1.attack(healer2));
     System.out.println(healer2.getHP());
 */
+
+/*
     healer1.addFriends(healer3);
     healer1.addFriends(healer4);
     System.out.println(healer1.getAllies());
@@ -39,6 +41,12 @@ public class ArdianDriver {
     System.out.println(healer4.getHP());
     System.out.println(healer1.getHP());
     System.out.println(healer1.getSpecial());
+*/
+
+    Mage mage1 = new Mage();
+    System.out.println(healer1.getHP());
+    System.out.println(mage1.attack(healer1));
+    System.out.println(healer1.getHP());
 
 
 
