@@ -32,6 +32,7 @@ public abstract class Adventurer{
     return n;
   }
 
+
   /*
   all adventurers must have a way to attack enemies and
   support their allys
@@ -104,6 +105,7 @@ public abstract class Adventurer{
     return this.getName();
   }
 
+
   //Get Methods
   public String getName(){
     return name;
@@ -157,12 +159,15 @@ public abstract class Adventurer{
   public int getProtect(){
     return this.protect;
   }
+
   public void setProtect(int n){
     this.protect = n;
   }
 
-
-  public void debuff(){
-    // actually do the stuff of the debuffs. The prior commands are to tell you the info about it.This is where we actually do it.
-  }
+// enemies when stunned can't do anything
+  public void ifStunned(){
+    if (getStun() > 0){
+      setStun(getStun() - 1);
+      // make it skip a turn. THIS IS NOT DONE YET!!!!!
+    }
 }

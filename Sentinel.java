@@ -52,12 +52,12 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
   /* Stuns enemy up to 3 turns */
   public String specialAttack(Adventurer other){
     if (this.getSpecial - 10 >= 0){
-    int turns = Math.random();
-    if (turns > 0.75){
+    int turns = Math.random() * 100;
+    if (turns > 75){
       turns = 3;
       other.setStun(other.getStun() + turns);
     }
-    else if (turns > 0.25){
+    else if (turns > 25){
       turns = 2;
       other.setStun(other.getStun() + turns);
     }
