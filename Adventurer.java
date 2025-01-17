@@ -44,7 +44,7 @@ public abstract class Adventurer{
   /*This is an example of an improvement that you can make to allow
    * for more flexible targetting.
    */
-  //heal or buff the party
+  //heal or buff the partyThis is a reminder: If you and your partner1 did not BOTH put in solid efforts, then both of your grades will be affected. EACH of you must send me an email about the project with your sides of the story with a complete explanation. It is sufficient to notify your partner that you are sending an email so that they email me as well, as I would prefer feedback from both parties.  If you experienced group problems and do not do this, both of you risk a lower grade as a result. Did you have a fair partner experience?
   //public abstract String support(ArrayList<Adventurer> others);
 
   //heal or buff the target adventurer
@@ -168,22 +168,15 @@ public abstract class Adventurer{
     this.protect = n;
   }
 
-
-
-  public void debuff(){
-    // actually do the stuff of the debuffs. The prior commands are to tell you the info about it.This is where we actually do it.
-  }
-
-  publix void setDamageBoost(boolean bool){
-    damageBoost = bool;
-  }
-
 // enemies when stunned can't do anything
   public void ifStunned(){
     if (getStun() > 0){
       setStun(getStun() - 1);
       // make it skip a turn. THIS IS NOT DONE YET!!!!!
     }
-
 }
+
+  public void setDamageBoost(boolean bool){
+    this.damageBoost = bool;
+  }
 }

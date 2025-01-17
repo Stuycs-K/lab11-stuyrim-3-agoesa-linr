@@ -59,7 +59,7 @@ public class Mage extends Adventurer {
   }
 
   public String support(Adventurer other){
-    support();
+    return support();
   }
 
     public String specialAttack(Adventurer other){
