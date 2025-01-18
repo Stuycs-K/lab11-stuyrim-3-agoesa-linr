@@ -7,7 +7,7 @@ public abstract class Adventurer{
   private ArrayList<Adventurer> enemies;
   private int stun;
   private int protect;
-  private boolean damageBoost;
+  private int damageBoost;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -101,7 +101,7 @@ public abstract class Adventurer{
     this.enemies = enemies;
     protect = 0;
     stun = 0;
-    damageBoost = false;
+    damageBoost = 0;
   }
 
   //toString method
@@ -175,10 +175,11 @@ public abstract class Adventurer{
       // make it skip a turn. THIS IS NOT DONE YET!!!!!
     }
 }
-  public boolean getDamageBoost(){
+  public int getDamageBoost(){
     return damageBoost;
   }
-  public void setDamageBoost(boolean bool){
-    this.damageBoost = bool;
+
+  public void setDamageBoost(int turns){
+    this.damageBoost = turns;
   }
 }
