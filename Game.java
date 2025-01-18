@@ -20,10 +20,10 @@ public class Game{
     for(int a = 1; a <= HEIGHT; a++){
 
       for(int i = 1; i <= WIDTH; i++){
-        if(a == 1 || a == 6|| a == 11||  a == HEIGHT){
+        if(a == 1 || a == 7|| a == 13||  a == HEIGHT){
           drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
         }
-        if(i == 1 || (i == 47 && a > 11) || i == WIDTH){
+        if(i == 1 || (i == 47 && a > 13) || i == WIDTH){
           drawText(Text.colorize(" ",BORDER_BACKGROUND), a, i);
         }
       }
@@ -97,7 +97,7 @@ public class Game{
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
-      ArrayList<Adventurer> party = new ArrayList<>();
+      ArrayList<Adventurer> party = new ArrayList<Adventurer>();
       Adventurer Healer = new Healer("Healer");
       Adventurer CodeWarrior = new CodeWarrior ("CodeWarrior");
       Adventurer Mage = new Mage("Mage");
@@ -109,6 +109,14 @@ public class Game{
       return party.get(rando);
 
 
+    }
+
+    public static ArrayList<Adventurer> createRandomParty(int size){
+      ArrayList<Adventurer> rando = new ArrayList<Adventurer>();
+      for(int i = 0; i < size; i++){
+        rando.add(createRandomAdventurer());
+      }
+      return rando;
     }
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
@@ -160,26 +168,20 @@ public class Game{
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(){
-    ArrayList<Adventurer> party = new ArrayList<>();
-    ArrayList<Adventurer> enemies = new ArrayList<>();
-    for(int i = 0; i < 3; i++){
-      party.add(createRandomAdventurer());
-    }
-    for(int i = 0; i < 3; i++){
-      enemies.add(createRandomAdventurer());
-    }
-
-
-
-
-    drawBackground();
+  public static void drawScreen(ArrayList<Adventurer> party, ArrayList<Adventurer> enemy){
+      drawBackground();
 
     //draw player party
-    drawParty(party, 2);
+    Text.go(2,2);
+    System.out.print("PARTY: ");
+    drawParty(party, 3);
+
 
     //draw enemy party
-    drawParty(enemies, 7);
+    Text.go(8,2);
+    System.out.print("ENEMY PARTY: ");
+
+    drawParty(enemy, 9);
     Scanner in = new Scanner(System.in);
 
     userInput(in);
@@ -218,11 +220,10 @@ public class Game{
     //Make an ArrayList of Adventurers and add 1-3 enemies to it.
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
-    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+    ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    Adventurer TEMPS = new Healer("TEMPS");
-    enemies.add(TEMPS);
+    enemies = createRandomParty(3);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -230,8 +231,7 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    Adventurer TEMP = new Healer("TEMP");
-    party.add(TEMP);
+    party = createRandomParty(3);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -243,7 +243,7 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen();//initial state.
+    drawScreen(party, enemies);//initial state.
 
     //Main loop
 
@@ -330,7 +330,7 @@ public class Game{
       }
 
       //display the updated screen after input has been processed.
-      drawScreen();
+      drawScreen(party, enemies);
 
 
     }//end of main game loop
