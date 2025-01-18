@@ -5,9 +5,9 @@ public abstract class Adventurer{
   private int HP,maxHP;
   private ArrayList<Adventurer> allies;
   private ArrayList<Adventurer> enemies;
-  private int stun = 0;
-  private int protect = 0;
-  private boolean damageBoost = false;
+  private int stun;
+  private int protect;
+  private boolean damageBoost;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -62,9 +62,6 @@ public abstract class Adventurer{
   */
 
   public void applyDamage(int amount){
-    if (damageBoost) {
-      this.HP -= amount * 1.5;
-    }
     if (this.getProtect() > 0){
       this.setProtect(this.getProtect() - 1);
       this.HP -= amount * 0.25;
@@ -102,6 +99,9 @@ public abstract class Adventurer{
     this.maxHP = hp;
     this.allies = allies;
     this.enemies = enemies;
+    protect = 0;
+    stun = 0;
+    damageBoost = false;
   }
 
   //toString method
@@ -175,7 +175,9 @@ public abstract class Adventurer{
       // make it skip a turn. THIS IS NOT DONE YET!!!!!
     }
 }
-
+  public boolean getDamageBoost(){
+    return damageBoost;
+  }
   public void setDamageBoost(boolean bool){
     this.damageBoost = bool;
   }
