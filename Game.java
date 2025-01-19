@@ -6,7 +6,7 @@ public class Game{
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
   public static void main(String[] args) {
-    // drawScreen();
+
 
     run();
 
@@ -83,7 +83,7 @@ public class Game{
     while (currentHeight < height) {
         String spaces = ""; // Start with an empty string
         for (int i = 0; i < width; i++) {
-            spaces += " "; // Add spaces to the blank line
+            spaces += " $"; // Add spaces to the blank line
         }
         drawText(spaces, row + currentHeight, col);
         currentHeight++;
@@ -182,9 +182,9 @@ public class Game{
     System.out.print("ENEMY PARTY: ");
 
     drawParty(enemy, 9);
-    Scanner in = new Scanner(System.in);
 
-    userInput(in);
+    Text.go(15,3);
+
 
 
 
@@ -192,7 +192,7 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(12,2);
+      Text.go(15,3);
 
       //show cursor
       Text.showCursor();
@@ -249,6 +249,7 @@ public class Game{
 
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+    TextBox(14, 3, 43, 7, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
