@@ -134,7 +134,7 @@ public class Game{
       //YOUR CODE HERE
       for(int i = 0; i < party.size(); i ++){
         drawText((party.get(i)).getName(), startRow, 10 + (i * (WIDTH/party.size())));
-        drawText("HP: " + colorByPercent((party.get(i)).getHP()-20, (party.get(i)).getmaxHP()), startRow + 1, 10 + (i * (WIDTH/party.size())));
+        drawText("HP: " + colorByPercent((party.get(i)).getHP(), (party.get(i)).getmaxHP()), startRow + 1, 10 + (i * (WIDTH/party.size())));
         drawText((party.get(i)).getSpecialName() + " : " + (party.get(i)).getSpecial(), startRow + 2, 10 + (i * (WIDTH/party.size())));
       }
 
@@ -192,7 +192,7 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(15,3);
+      Text.go(17,3);
 
       //show cursor
       Text.showCursor();
@@ -221,9 +221,14 @@ public class Game{
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
+    ArrayList<String> enemyNames = new ArrayList<String>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     enemies = createRandomParty(3);
+    for(int i = 0; i < enemies.size(); i++){
+      enemyNames.add((enemies.get(i)).getName());
+
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -248,15 +253,16 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-    TextBox(14, 3, 43, 7, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+      String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+      TextBox(14, 3, 43, 7, preprompt);
+
       //Read user input
       input = userInput(in);
 
       //example debug statment
-      TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      // TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){
@@ -265,6 +271,12 @@ public class Game{
         if(input.equals("attack") || input.equals("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          TextBox(14, 3, 43, 7, "Which opponent would you like to attack? (Name)");
+          input = userInput(in);
+
+          int enemy = enemyNames.indexOf(input);
+
+          party.get(whichPlayer).attack(enemies.get(enemy));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special") || input.equals("sp")){

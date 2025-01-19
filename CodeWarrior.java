@@ -20,7 +20,7 @@ public class CodeWarrior extends Adventurer{
   }
 
   public CodeWarrior(){
-    this("Carmack");
+    this("CodeWarrior");
   }
 
   /*The next 8 methods are all required because they are abstract:*/

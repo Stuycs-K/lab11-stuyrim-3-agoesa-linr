@@ -18,7 +18,7 @@ public class Healer extends Adventurer {
     this(name, new ArrayList<Adventurer>());
   }
   public Healer(){
-    this("bob");
+    this("Healer");
   }
 
   public String getSpecialName(){

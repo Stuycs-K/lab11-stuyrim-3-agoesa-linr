@@ -18,7 +18,7 @@ public class Mage extends Adventurer {
     this(name, new ArrayList<Adventurer>());
   }
   public Mage(){
-    this("Mark");
+    this("Mage");
   }
 
   public String getSpecialName(){
