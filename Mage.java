@@ -18,7 +18,7 @@ public class Mage extends Adventurer {
     this(name, new ArrayList<Adventurer>());
   }
   public Mage(){
-    this("mark");
+    this("Mark");
   }
 
   public String getSpecialName(){
@@ -39,7 +39,11 @@ public class Mage extends Adventurer {
 
   public String attack(Adventurer other){
     restoreSpecial(3);
-    int damage = (int) (Math.random() * 5) +  3 ;
+    int damage = (int) (Math.random() * 5) +  3;
+    if (getDamageBoost() > 0){
+      damage *= 1.5;
+      setDamageBoost(getDamageBoost() - 1);
+    }
     other.applyDamage(damage);
     Random rand1 = new Random();
     if (rand1.nextBoolean()){
@@ -47,13 +51,13 @@ public class Mage extends Adventurer {
       return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage! Restores 2 aura.";
     }
     else {
-      return this + " uses Thunderbo+lt on " + other + " and dealt " + damage + " points of damage. Restores 2 aura. ";
+      return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. Restores 2 aura. ";
     }
   }
 
   public String support(){
     for (int i = 0; i < getAllies().size(); i++){
-    getAllies().get(i).setDamageBoost(true);
+    getAllies().get(i).setDamageBoost(3);
   }
     return this + " uses Elemental Surge, giving their teammates a damage boost! Restores 2 aura.";
   }
@@ -64,16 +68,13 @@ public class Mage extends Adventurer {
 
     public String specialAttack(Adventurer other){
       if (getSpecial() > 10){
-        setSpecial(Math.min(0, getSpecial() - 1));
+        setSpecial(Math.min(0, getSpecial() - 10));
         int hpSacrifice = getHP() / 4;
-        setHP(getHP() - hpSacrifice);
-        getAllies().get(0).setHP( (int) Math.min( getAllies().get(1).getmaxHP(),  getAllies().get(1).getHP() +  getAllies().get(1).getmaxHP() /2));
-        getAllies().get(1).setHP( (int) Math.min( getAllies().get(0).getmaxHP(),  getAllies().get(0).getHP() +  getAllies().get(0).getmaxHP() /2));
-
-        int damage = (int) (Math.random() * 3) + 2;
-        other.applyDamage(2);
-
-        return this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "points of damage to " + other + "!";
+        int damage = (int) (Math.random() * 2) + 5;
+        for (int i = 0; i < getEnemies().size(); i++){
+          getEnemies().get(i).setDamageBoost(damage);
+        }
+        return this + " Inferno Blast Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "points of damage to " + other + "!";
       }
       else {
         return "Not enough elixir!";

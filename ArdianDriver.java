@@ -47,8 +47,32 @@ public class ArdianDriver {
     System.out.println(healer1.getHP());
     System.out.println(mage1.attack(healer1));
     System.out.println(healer1.getHP());
-
-
+    System.out.println(mage1.getAllies());
+    mage1.addFriends(healer3);
+    mage1.addFriends(healer4);
+    System.out.println(healer3.getDamageBoost());
+    System.out.println(healer4.getDamageBoost());
+    System.out.println(healer3.attack(healer2));
+    System.out.println(healer4.attack(healer2));
+    System.out.println(mage1.support());
+    System.out.println(healer3.getDamageBoost());
+    System.out.println(healer4.getDamageBoost());
+    System.out.println(healer3.attack(healer2));
+    System.out.println(healer4.attack(healer2));
+    System.out.println(healer3.getDamageBoost());
+    System.out.println(healer4.getDamageBoost());
+    System.out.println(healer3.attack(healer2));
+    System.out.println(healer4.attack(healer2));
+    System.out.println(healer3.getDamageBoost());
+    System.out.println(healer4.getDamageBoost());
+    System.out.println(healer3.attack(healer2));
+    System.out.println(healer4.attack(healer2));
+    System.out.println(healer3.getDamageBoost());
+    System.out.println(healer4.getDamageBoost());
+    System.out.println(healer3.attack(healer2));
+    System.out.println(healer4.attack(healer2));
+    System.out.println(healer3.getDamageBoost());
+    System.out.println(healer4.getDamageBoost());
 
   }
 }
