@@ -314,24 +314,29 @@ public class Game{
 
         //You should decide when you want to re-ask for user input
         //If no errors:
-        whichPlayer++;
 
 
-        if(whichPlayer < party.size()){
+
+        if(whichPlayer < party.size() - 1){
           //This is a player turn.
           //Decide where to draw the following prompt:
+
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          whichPlayer++;
+
 
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "press enter to see mo                         nster's turn";
+          TextBox(14,3,43,7, prompt);
 
           partyTurn = false;
           whichOpponent = 0;
         }
         //done with one party member
+
       }else{
         //not the party turn!
 
@@ -340,11 +345,24 @@ public class Game{
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
+          input = userInput(in);
+        int randomAlly = (int)(Math.random() * (party.size() + 1));
+        int randomAction = (int)(Math.random() * 2);
+        if(randomAction == 0){
+          System.out.print(enemies.get(whichOpponent).attack(party.get(randomAlly)));
+        }
+        if(randomAction == 1){
+          System.out.print(enemies.get(whichOpponent).specialAttack(party.get(randomAlly)));
+        }
+
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
+        TextBox(14,3,43,7, prompt);
+
+        System.out.println(input);
 
         whichOpponent++;
 
