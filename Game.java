@@ -234,9 +234,14 @@ public class Game{
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
     ArrayList<Adventurer> party = new ArrayList<>();
+    ArrayList<String> partyNames = new ArrayList<String>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     party = createRandomParty(3);
+    for(int i = 0; i < party.size(); i++){
+      partyNames.add((party.get(i)).getName());
+
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -275,6 +280,12 @@ public class Game{
           input = userInput(in);
 
           int enemy = enemyNames.indexOf(input);
+          while(enemy < 0){
+            TextBox(14,3,43,7, "Check your spelling, make sure capitalization is correct.");
+            input = userInput(in);
+            enemy = enemyNames.indexOf(input);
+
+          }
 
           party.get(whichPlayer).attack(enemies.get(enemy));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -282,6 +293,12 @@ public class Game{
         else if(input.equals("special") || input.equals("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          TextBox(14, 3, 43, 7, "Which opponent would you like to special attack? (Name) ");
+          input = userInput(in);
+
+          int enemy = enemyNames.indexOf(input);
+
+          party.get(whichPlayer).specialAttack(enemies.get(enemy));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
           //THIS IS HOW YOU WANT TO DO THE OTHERS
@@ -290,6 +307,8 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          int ally = Integer.parseInt(input.substring(input.length()-1));
+          party.get(whichPlayer).support(party.get(ally));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
