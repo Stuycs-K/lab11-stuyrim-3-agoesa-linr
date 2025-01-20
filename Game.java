@@ -262,7 +262,10 @@ public class Game{
 
 
 
-    while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+    while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit")) &&
+      party.size() > 0 && enemies.size() > 0){
+
+
       if(partyTurn){
         preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
         TextBox(14, 3, 43, 7, preprompt);
@@ -299,6 +302,15 @@ public class Game{
           }
 
           TextBox(22,4,35,7,party.get(whichPlayer).attack(enemies.get(enemy)));
+          if((enemies.get(enemy)).getHP()<=0){
+            String dead = enemyNames.get(enemy);
+            enemies.remove(enemies.get(enemy));
+            enemyNames.remove(enemy);
+
+            Text.clear();
+            drawScreen(party, enemies);
+            TextBox(22,4,35,7, dead + " has been defeated!");
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special") || input.equals("sp")){
@@ -311,6 +323,15 @@ public class Game{
           int enemy = enemyNames.indexOf(input);
 
           TextBox(22,4,35,7,party.get(whichPlayer).specialAttack(enemies.get(enemy)));
+          if((enemies.get(enemy)).getHP()<=0){
+            String dead = enemyNames.get(enemy);
+            enemies.remove(enemies.get(enemy));
+            enemyNames.remove(enemy);
+
+            Text.clear();
+            drawScreen(party, enemies);
+            TextBox(22,4,35,7, dead + " has been defeated!");
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
           //THIS IS HOW YOU WANT TO DO THE OTHERS
@@ -367,6 +388,15 @@ public class Game{
         if(randomAction == 1){
           TextBox(22,4,35,7,(enemies.get(whichOpponent).specialAttack(party.get(randomAlly))));
         }
+        if((party.get(randomAlly)).getHP()<=0){
+          String dead = (party.get(randomAlly)).getName();
+          party.remove(randomAlly);
+
+
+          Text.clear();
+          drawScreen(party, enemies);
+          TextBox(22,4,35,7, dead + " has been defeated!");
+        }
 
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
@@ -402,10 +432,24 @@ public class Game{
       drawScreen(party, enemies);
 
 
+
+
     }//end of main game loop
+    if(party.size() == 0){
+      Text.clear();
+      TextBox(14, 3, 43, 7, "YOU LOSE");
+
+    }
+    if(enemies.size() == 0){
+      Text.clear();
+      TextBox(14, 3, 43, 7, "YOU WIN");
 
 
     //After quit reset things:
     quit();
+
+
+
+    }
   }
 }
