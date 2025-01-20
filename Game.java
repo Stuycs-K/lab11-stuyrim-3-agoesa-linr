@@ -258,19 +258,22 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+    TextBox(14, 3, 43, 7, preprompt);
+
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
-      String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-      TextBox(14, 3, 43, 7, preprompt);
+
 
       //Read user input
       input = userInput(in);
 
       //example debug statment
-      // TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      // TextBox(50,3,20,3,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){
+
 
         //Process user input for the last Adventurer:
         if(input.equals("attack") || input.equals("a")){
@@ -278,6 +281,7 @@ public class Game{
           //YOUR CODE HERE
           TextBox(14, 3, 43, 7, "Which opponent would you like to attack? (Name)");
           input = userInput(in);
+          TextBox(14, 3, 43, 7, preprompt);
 
           int enemy = enemyNames.indexOf(input);
           while(enemy < 0){
@@ -295,6 +299,7 @@ public class Game{
           //YOUR CODE HERE
           TextBox(14, 3, 43, 7, "Which opponent would you like to special attack? (Name) ");
           input = userInput(in);
+          TextBox(14, 3, 43, 7, preprompt);
 
           int enemy = enemyNames.indexOf(input);
 
@@ -308,6 +313,7 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           int ally = Integer.parseInt(input.substring(input.length()-1));
+          TextBox(14, 3, 43, 7, preprompt);
           party.get(whichPlayer).support(party.get(ally));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
@@ -345,14 +351,14 @@ public class Game{
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
-          input = userInput(in);
-        int randomAlly = (int)(Math.random() * (party.size() + 1));
+
+        int randomAlly = (int)(Math.random() * (party.size()));
         int randomAction = (int)(Math.random() * 2);
         if(randomAction == 0){
-          System.out.print(enemies.get(whichOpponent).attack(party.get(randomAlly)));
+          TextBox(18,3,20,7,(enemies.get(whichOpponent).attack(party.get(randomAlly))));
         }
         if(randomAction == 1){
-          System.out.print(enemies.get(whichOpponent).specialAttack(party.get(randomAlly)));
+          TextBox(16,3,20,7,(enemies.get(whichOpponent).specialAttack(party.get(randomAlly))));
         }
 
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -360,11 +366,16 @@ public class Game{
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
-        TextBox(14,3,43,7, prompt);
+        TextBox(16,3,43,7, prompt);
 
-        System.out.println(input);
+
+
+        // if(whichOpponent < enemies.size() - 1){
+        //   whichOpponent++;
+        // }
 
         whichOpponent++;
+
 
       }//end of one enemy.
 
@@ -377,6 +388,7 @@ public class Game{
         partyTurn=true;
         //display this prompt before player's turn
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+        TextBox(14, 3, 43, 7, prompt);
       }
 
       //display the updated screen after input has been processed.
