@@ -298,7 +298,7 @@ public class Game{
 
           }
 
-          party.get(whichPlayer).attack(enemies.get(enemy));
+          TextBox(22,4,35,7,party.get(whichPlayer).attack(enemies.get(enemy)));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special") || input.equals("sp")){
@@ -310,7 +310,7 @@ public class Game{
 
           int enemy = enemyNames.indexOf(input);
 
-          party.get(whichPlayer).specialAttack(enemies.get(enemy));
+          TextBox(22,4,35,7,party.get(whichPlayer).specialAttack(enemies.get(enemy)));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
           //THIS IS HOW YOU WANT TO DO THE OTHERS
@@ -362,10 +362,10 @@ public class Game{
         int randomAlly = (int)(Math.random() * (party.size()));
         int randomAction = (int)(Math.random() * 2);
         if(randomAction == 0){
-          TextBox(22,4,20,7,(enemies.get(whichOpponent).attack(party.get(randomAlly))));
+          TextBox(22,4,35,7,(enemies.get(whichOpponent).attack(party.get(randomAlly))));
         }
         if(randomAction == 1){
-          TextBox(22,4,20,7,(enemies.get(whichOpponent).specialAttack(party.get(randomAlly))));
+          TextBox(22,4,35,7,(enemies.get(whichOpponent).specialAttack(party.get(randomAlly))));
         }
 
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
