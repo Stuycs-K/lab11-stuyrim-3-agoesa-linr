@@ -5,9 +5,9 @@ public class Mage extends Adventurer {
   private  int aura, auraMax;
 
   public Mage(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
-    super(name, hp, allies);
+    super(name, hp, allies, enemies);
     auraMax = 16;
-    aura = auraMax / 2;
+    aura = auraMax;
   }
 
   public Mage(String name, ArrayList<Adventurer> allies){
@@ -69,12 +69,12 @@ public class Mage extends Adventurer {
     public String specialAttack(Adventurer other){
       if (getSpecial() > 10){
         setSpecial(Math.min(0, getSpecial() - 10));
-        int hpSacrifice = getHP() / 4;
         int damage = (int) (Math.random() * 2) + 5;
         for (int i = 0; i < getEnemies().size(); i++){
-          getEnemies().get(i).setDamageBoost(damage);
+          getEnemies().get(i).applyDamage(damage);
+          getEnemies().get(i).setFire(3);
         }
-        return this + " Inferno Blast Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "points of damage to " + other + "!";
+        return this + " uses Inferno Blast, dealing " + damage + " damage to each enemy, lighting them on fire!";
       }
       else {
         return "Not enough elixir!";

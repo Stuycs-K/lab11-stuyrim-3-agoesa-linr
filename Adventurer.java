@@ -8,6 +8,7 @@ public abstract class Adventurer{
   private int stun;
   private int protect;
   private int damageBoost;
+  private int onFire;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -181,5 +182,21 @@ public abstract class Adventurer{
 
   public void setDamageBoost(int turns){
     this.damageBoost = turns;
+  }
+
+  public int getFire(){
+    return onFire;
+  }
+
+  public void setFire(int turns){
+    this.onFire = turns;
+  }
+
+  public void fireDamage(){
+    if (getFire() > 0){
+      setFire(getFire()-1);
+      applyDamage(1);
+      System.out.println(this + " is on fire! They lose 1 HP...");
+    }
   }
 }

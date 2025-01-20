@@ -1,25 +1,32 @@
-import java.util.*;
+import java.util.ArrayList;
 public class Sentinel extends Adventurer{
   private int fortitude;
-  private int fortitudeMax = 10; // change the number
+  private int fortitudeMax; // change the number
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public static int randomHP(){
     return (int) (Math.random() * 3) + 28;
   }
 
-public Sentinel (String name, ArrayList<Adventurer> allies){
-  super(name, allies); // fix the constructors because I got no int hp
-  this.fortitude = this.fortitudeMax;
-}
-  public Sentinel(String name){
-    super(name,randomHP());
-    this.fortitude = this.fortitudeMax;
+  public Sentinel(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
+    super(name, hp, allies, enemies);
+    fortitudeMax = 16;
+    fortitude = fortitudeMax/2;
   }
 
+  public Sentinel(String name, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
+    this(name, randomHP(), allies, new ArrayList<Adventurer>());
+  }
+  public Sentinel(String name, ArrayList<Adventurer> allies){
+    this(name, allies, new ArrayList<Adventurer>());
+  }
+
+  public Sentinel(String name){
+    this(name, new ArrayList<Adventurer>());
+  }
+  
   public Sentinel(){
     this("Sentinel");
-    this.fortitude = this.fortitudeMax;
   }
 
 
@@ -51,8 +58,8 @@ public Sentinel (String name, ArrayList<Adventurer> allies){
 
   /* Stuns enemy up to 3 turns */
   public String specialAttack(Adventurer other){
-    if (this.getSpecial - 10 >= 0){
-    int turns = Math.random() * 100;
+    if (getSpecial() > 10){
+      setSpecial(Math.min(0, getSpecial() - 10));    int turns = (int) Math.random() * 100;
     if (turns > 75){
       turns = 3;
       other.setStun(other.getStun() + turns);

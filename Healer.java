@@ -7,16 +7,20 @@ public class Healer extends Adventurer {
   public Healer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies, enemies);
     elixir = 16;
-    elixirMax = elixirMax;
+    elixirMax = elixir/2;
   }
 
-  public Healer(String name, ArrayList<Adventurer> allies){
+  public Healer(String name, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     this(name, (int) (Math.random() * 3) + 24, allies, new ArrayList<Adventurer>());
+  }
+  public Healer(String name, ArrayList<Adventurer> allies){
+    this(name, allies, new ArrayList<Adventurer>());
   }
 
   public Healer(String name){
     this(name, new ArrayList<Adventurer>());
   }
+  
   public Healer(){
     this("Healer");
   }
@@ -38,6 +42,7 @@ public class Healer extends Adventurer {
   }
 
   public String attack(Adventurer other){
+    fireDamage();
     Random rand1 = new Random();
     int damage;
     damage = rand1.nextInt(3) + 1;
@@ -54,6 +59,7 @@ public class Healer extends Adventurer {
   }
 
   public String support(){
+    fireDamage();
     int hpAdd = 7;
     int specialAdd = 3;
     setHP(Math.min(getmaxHP(), getHP() + hpAdd));
@@ -62,6 +68,7 @@ public class Healer extends Adventurer {
   }
 
   public String support(Adventurer other){
+    fireDamage();
     int hpAdd = 7;
     int specialAdd = 3;
     other.setHP(Math.min(other.getmaxHP(), other.getHP() + hpAdd));
@@ -70,6 +77,7 @@ public class Healer extends Adventurer {
   }
 
     public String specialAttack(Adventurer other){
+      fireDamage();
       if (getSpecial() > 10){
         setSpecial(Math.max(0, getSpecial() - 10));
         int hpSacrifice = getHP() / 4;

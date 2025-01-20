@@ -6,10 +6,6 @@ public class ArdianDriver {
     Healer healer3 = new Healer("barry");
     Healer healer4 = new Healer("brenda");
 
-    System.out.println(healer1.getHP());
-    System.out.println(healer2.getHP());
-    System.out.println(healer3.getHP());
-    System.out.println(healer4.getHP());
 
 /*
     System.out.println(healer1.attack(healer2));
@@ -43,7 +39,10 @@ public class ArdianDriver {
     System.out.println(healer1.getSpecial());
 */
 
+
     Mage mage1 = new Mage();
+
+    /* 
     System.out.println(healer1.getHP());
     System.out.println(mage1.attack(healer1));
     System.out.println(healer1.getHP());
@@ -73,6 +72,25 @@ public class ArdianDriver {
     System.out.println(healer4.attack(healer2));
     System.out.println(healer3.getDamageBoost());
     System.out.println(healer4.getDamageBoost());
+*/
+
+    System.out.println(mage1.getHP());
+    System.out.println(mage1.getSpecial());
+    mage1.addFoe(healer1);
+    mage1.addFoe(healer2);
+    mage1.addFoe(healer3);
+    System.out.println(healer1.getHP());
+    System.out.println(healer2.getHP());
+    System.out.println(healer3.getHP());
+    System.out.println(mage1.specialAttack(healer1));
+    System.out.println(healer1.getHP());
+    System.out.println(healer2.getHP());
+    System.out.println(healer3.getHP());
+    System.out.println(healer1.getFire());
+    System.out.println(healer2.getFire());
+    System.out.println(healer3.getFire());
+    System.out.println(healer1.support());
+    System.out.println(healer1.getHP());
 
   }
 }
