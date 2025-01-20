@@ -99,11 +99,11 @@ public class Game{
     public static Adventurer createRandomAdventurer(){
       ArrayList<Adventurer> party = new ArrayList<Adventurer>();
       Adventurer Healer = new Healer("Healer");
-      Adventurer CodeWarrior = new CodeWarrior ("CodeWarrior");
+      Adventurer Sentinel = new CodeWarrior ("Sentinel");
       Adventurer Mage = new Mage("Mage");
 
       party.add(Healer);
-      party.add(CodeWarrior);
+      party.add(Sentinel);
       party.add(Mage);
       int rando = (int) (Math.random() * 3);
       return party.get(rando);
@@ -225,10 +225,7 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     enemies = createRandomParty(3);
-    for(int i = 0; i < enemies.size(); i++){
-      enemyNames.add((enemies.get(i)).getName());
 
-    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -239,9 +236,20 @@ public class Game{
     //YOUR CODE HERE
     party = createRandomParty(3);
     for(int i = 0; i < party.size(); i++){
+      (party.get(i)).setAllies(party);
+      (party.get(i)).setEnemies(enemies);
       partyNames.add((party.get(i)).getName());
-
     }
+
+      // Adding party members to enemy's foe List
+
+      for(int i = 0; i < enemies.size(); i++){
+        (enemies.get(i)).setAllies(enemies);
+        (enemies.get(i)).setEnemies(party);
+        enemyNames.add((enemies.get(i)).getName());
+      }
+
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -286,7 +294,7 @@ public class Game{
 
 
         //Process user input for the last Adventurer:
-        if(input.equals("attack") || input.equals("a")){
+        if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           TextBox(14, 3, 43, 7, "Which opponent would you like to attack? (Name)");
@@ -313,7 +321,7 @@ public class Game{
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.equals("special") || input.equals("sp")){
+        else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           TextBox(14, 3, 43, 7, "Which opponent would you like to special attack? (Name) ");
@@ -335,14 +343,17 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
           //THIS IS HOW YOU WANT TO DO THE OTHERS
-        else if(input.startsWith("su ") || input.startsWith("support ")){
+        else if(input.startsWith("su") || input.startsWith("support")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          int ally = Integer.parseInt(input.substring(input.length()-1));
+          TextBox(14, 3, 43, 7, "Which ally would you like to support? (Name)");
+          input = userInput(in);
+          TextBox(14, 3, 43, 7, preprompt);
+          int ally = partyNames.indexOf(input);
           // TextBox(14, 3, 43, 7, preprompt);
-          party.get(whichPlayer).support(party.get(ally));
+          TextBox(22,4,35,7,party.get(whichPlayer).support(party.get(ally)));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 

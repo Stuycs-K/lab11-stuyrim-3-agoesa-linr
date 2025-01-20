@@ -135,6 +135,14 @@ public abstract class Adventurer{
     return enemies;
   }
 
+  public void setAllies(ArrayList<Adventurer> ally){
+    allies = ally;
+  }
+
+  public void setEnemies(ArrayList<Adventurer> enemy){
+    enemies = enemy;
+  }
+
   public void addFriends(Adventurer friend){
     getAllies().add(friend);
     System.out.println("ally gained!");
