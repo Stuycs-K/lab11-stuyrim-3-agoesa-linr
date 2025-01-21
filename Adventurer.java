@@ -10,7 +10,7 @@ public abstract class Adventurer{
   private int damageBoost;
   private int onFire;
   private int poison;
-  private int weakFactor;
+
 
 
   //Abstract methods are meant to be implemented in child classes.
