@@ -315,7 +315,7 @@ public class Game{
         if(input.equalsIgnoreCase("attack") || input.equalsIgnoreCase("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14,6, 70, 7, "Which opponent would you like to attack?");
+          TextBox(14,6, 70, 7, "Which opponent would you like to attack? (number)");
           input = userInput(in);
           TextBox(14, 6, 70, 7, preprompt);
 
@@ -342,7 +342,7 @@ public class Game{
         else if(input.equalsIgnoreCase("special") || input.equalsIgnoreCase("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14, 6, 70, 7, "Which opponent would you like to special attack? ");
+          TextBox(14, 6, 70, 7, "Which opponent would you like to special attack? (number)");
           input = userInput(in);
           TextBox(14, 6, 70, 7, preprompt);
 
@@ -373,7 +373,7 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14, 6, 70, 7, "Which ally would you like to support? ");
+          TextBox(14, 6, 70, 7, "Which ally would you like to support? (number)");
           input = userInput(in);
           TextBox(14, 6, 70, 7, preprompt);
           int ally = Integer.parseInt(input) - 1;
@@ -425,7 +425,7 @@ public class Game{
         int randomAlly = (int)(Math.random() * (party.size()));
         int randomAction = (int)(Math.random() * 2);
         if(randomAction == 0){
-          
+
           TextBox(22,6,70,7,(enemies.get(whichOpponent).attack(party.get(randomAlly))));
         }
         if(randomAction == 1){
