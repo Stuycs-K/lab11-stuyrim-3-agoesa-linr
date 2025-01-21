@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class Sentinel extends Adventurer{
   private int fortitude;
-  private int fortitudeMax; // change the number
+  private int fortitudeMax; 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public static int randomHP(){
@@ -59,7 +59,8 @@ public class Sentinel extends Adventurer{
   /* Stuns enemy up to 3 turns */
   public String specialAttack(Adventurer other){
     if (getSpecial() > 10){
-      setSpecial(Math.min(0, getSpecial() - 10));    int turns = (int) Math.random() * 100;
+      setSpecial(Math.min(0, getSpecial() - 10));   
+       int turns = (int) Math.random() * 100;
     if (turns > 75){
       turns = 3;
       other.setStun(other.getStun() + turns);
@@ -67,7 +68,7 @@ public class Sentinel extends Adventurer{
     else if (turns > 25){
       turns = 2;
       other.setStun(other.getStun() + turns);
-    }
+    } 
     else {
       turns = 1;
       other.setStun(other.getStun() + turns);
@@ -91,5 +92,5 @@ public class Sentinel extends Adventurer{
     this.restoreSpecial(2);
     return this.getName() + " used Guardian's Shield on" + this.getName() + "!";
 
-  }// fix constructors, the debuff in adventuerer.
+  }
 }
