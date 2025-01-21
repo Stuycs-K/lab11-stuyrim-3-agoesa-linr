@@ -6,8 +6,9 @@ public class Healer extends Adventurer {
 
   public Healer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies, enemies);
-    elixir = elixirMax / 2;
     elixirMax = 16;
+    elixir = elixirMax / 2;
+
   }
 
   public Healer(String name, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
