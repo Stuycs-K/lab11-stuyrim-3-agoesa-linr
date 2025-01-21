@@ -38,6 +38,7 @@ public class Mage extends Adventurer {
   }
 
   public String attack(Adventurer other){
+    fireDamage();
     restoreSpecial(3);
     int damage = (int) (Math.random() * 5) +  3;
     if (getDamageBoost() > 0){
@@ -56,6 +57,7 @@ public class Mage extends Adventurer {
   }
 
   public String support(){
+    fireDamage();
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setDamageBoost(3);
   }
@@ -67,6 +69,7 @@ public class Mage extends Adventurer {
   }
 
     public String specialAttack(Adventurer other){
+      fireDamage();
       if (getSpecial() > 10){
         setSpecial(Math.min(0, getSpecial() - 10));
         int damage = (int) (Math.random() * 2) + 5;

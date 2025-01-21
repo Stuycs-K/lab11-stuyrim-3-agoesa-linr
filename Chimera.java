@@ -4,9 +4,7 @@ public class Chimera extends Adventurer{
   private int rageMax;
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
-  public static int randomHP(){
-    return (int) (Math.random() * 3) + 28;
-  }
+
 
   public Chimera(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies, enemies);
@@ -15,7 +13,7 @@ public class Chimera extends Adventurer{
   }
 
   public Chimera(String name, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
-    this(name, randomHP(), allies, new ArrayList<Adventurer>());
+    this(name, 100, allies, new ArrayList<Adventurer>());
   }
   public Chimera(String name, ArrayList<Adventurer> allies){
     this(name, allies, new ArrayList<Adventurer>());
