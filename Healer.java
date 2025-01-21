@@ -21,7 +21,7 @@ public class Healer extends Adventurer {
   public Healer(String name){
     this(name, new ArrayList<Adventurer>());
   }
-  
+
   public Healer(){
     this("Healer");
   }
@@ -92,7 +92,7 @@ public class Healer extends Adventurer {
         return this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
       }
       else {
-        return "Not enough elixir!";
+        return this + " does not have enough elixir! Instead " + attack(other);
       }
     }
 }

@@ -81,7 +81,7 @@ public class Mage extends Adventurer {
         return this + " uses Inferno Blast, dealing " + damage + " damage to each enemy, lighting them on fire!";
       }
       else {
-        return "Not enough elixir!";
+        return this + " does not have enough aura! Instead " + attack(other);
       }
     }
 }
