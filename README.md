@@ -23,8 +23,8 @@ Make a clear list of features that work/dont work
 - Running the game in terminal :white_check_mark:
 - Status effects that effects other characters for multiple turns :ballot_box_with_check:
 - Selecting which adventurer to target :white_check_mark:
-- Displayed what each adventurer des :white_check_mark:
-- Checking for incorrect input :white_check_mark:
+- Displayed what each adventurer does :white_check_mark:
+- Checking for incorrect input (unless a string is inputted instead of a integer) :white_check_mark:
 
 ## Adventurer Subclasses
 
