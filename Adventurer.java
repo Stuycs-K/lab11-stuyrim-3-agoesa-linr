@@ -222,9 +222,11 @@ public abstract class Adventurer{
   public String ifPoisoned(){
     if (getPoison() > 0){
       setPoison(getPoison() -1);
-      this.applyDamage(1);
+      this.applyDamage(1);return " " + this.getName() + " is poisoned! They lose 1 HP and their attack is weakened by 75% \n";
     }
-    return " " + this.getName() + " is poisoned! They lose 1 HP and their attack is weakened by 75% \n";
+    else{
+    return "";
+    }
   }
 
 }
