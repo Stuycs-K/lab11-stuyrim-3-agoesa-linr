@@ -90,7 +90,7 @@ public class Healer extends Adventurer {
     int specialAdd = 3;
     other.setHP(Math.min(other.getmaxHP(), other.getHP() + hpAdd));
     other.restoreSpecial(3);
-    return this.fireDamage() + " " + this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their" + other.getSpecialName() +  " by " + specialAdd + " elixir!";
+    return this.fireDamage() + " " + this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their " + other.getSpecialName() +  " by " + specialAdd + " elixir!";
   }
 
     public String specialAttack(Adventurer other){
@@ -116,10 +116,10 @@ public class Healer extends Adventurer {
           setDamageBoost(getDamageBoost() - 1);
         }
         other.applyDamage(2);
-        return  this.fireDamage() + " " + this + " uses Dark Blessing, healing their allies by 25% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
+        return  this.fireDamage() + " " + this + " uses Heaven's Blessing, healing their allies by 25% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
       }
       else {
-        return  this.fireDamage() + " " + this + " does not have enough elixir! Instead " + attack(other);
+        return  this + " does not have enough elixir! Instead" + attack(other);
       }
     }
 }

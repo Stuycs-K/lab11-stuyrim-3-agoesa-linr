@@ -69,7 +69,7 @@ public class Sentinel extends Adventurer{
     other.applyDamage(damage);
     this.restoreSpecial(3);
     return  fireDamage() + "  " + this.getName() + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
-    " points of damage.";
+    " points of damage. Restores 3 fortitude.";
   }
 
   /* Stuns enemy up to 3 turns */
@@ -96,7 +96,7 @@ public class Sentinel extends Adventurer{
     return  fireDamage() + "  " + this.getName() + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
   }
     else {
-      return  fireDamage() + "  " + this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10";
+      return  this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10. Instead" + attack(other);
 
     }
 }
@@ -108,7 +108,7 @@ public class Sentinel extends Adventurer{
     
     other.setProtect(other.getProtect() + 2);
     this.restoreSpecial(2);
-    return  fireDamage() + "  " +  this.getName() + " used Guardian's Shield on " + other.getName() + "!";
+    return  fireDamage() + "  " +  this.getName() + " used Guardian's Shield on " + other.getName() + "! Reduces damage taken by 75%. Restores 2 fortitude.";
 
   }
   /*Absorbs damage done to teamates for 2 turns*/
@@ -116,10 +116,9 @@ public class Sentinel extends Adventurer{
     if (ifStunned()){
       return "" + this.getName() + " is stunned! Their turn is skipped.";
     }
-    
     this.setProtect(this.getProtect() + 2);
     this.restoreSpecial(2);
-    return  fireDamage() + "  " + this.getName() + " used Guardian's Shield on" + this.getName() + "!";
+    return  fireDamage() + "  " + this.getName() + " used Guardian's Shield on themself! Reduces damage taken by 75%. Restores 2 fortitude.";
 
   }
 }

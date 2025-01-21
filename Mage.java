@@ -111,7 +111,7 @@ public class Mage extends Adventurer {
         return fireDamage() + " " + this + " uses Inferno Blast, dealing " + damage + " damage to each enemy, lighting them on fire!";
       }
       else {
-        return fireDamage() + " " + this + " does not have enough aura! Instead " + attack(other);
+        return  this + " does not have enough aura! Instead" + attack(other);
       }
     }
 }

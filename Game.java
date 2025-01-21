@@ -238,7 +238,14 @@ public class Game{
     ArrayList<String> partyNames = new ArrayList<String>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    party = createRandomParty(3);
+    Adventurer Healer = new Healer("Healer");
+    Adventurer Sentinel = new Sentinel("Sentinel");
+    Adventurer Mage = new Mage("Mage");
+
+    party.add(Healer);
+    party.add(Sentinel);
+    party.add(Mage);
+
     for(int i = 0; i < party.size(); i++){
       (party.get(i)).setAllies(party);
       (party.get(i)).setEnemies(enemies);
@@ -313,8 +320,8 @@ public class Game{
           TextBox(14, 6, 70, 7, preprompt);
 
           int enemy = Integer.parseInt(input) - 1;
-          while(enemy < 0){
-            TextBox(14,6,70,7, "Which opponent? (number)");
+          while(enemy < 0 || enemy >= enemies.size()){
+            TextBox(14,6,70,7, "Please input a valid number!");
             input = userInput(in);
             enemy = Integer.parseInt(input)-1;
 
@@ -341,8 +348,8 @@ public class Game{
 
          int enemy = Integer.parseInt(input) - 1;
 
-          while(enemy < 0){
-            TextBox(14,6,70,7, "Which opponent? (number) ");
+          while(enemy < 0 || enemy >= enemies.size()){
+            TextBox(14,6,70,7, "Please input a valid number! ");
             input = userInput(in);
             enemy = Integer.parseInt(input) - 1;
 
@@ -370,10 +377,10 @@ public class Game{
           input = userInput(in);
           TextBox(14, 6, 70, 7, preprompt);
           int ally = Integer.parseInt(input) - 1;
-          while(ally < 0){
-            TextBox(14,6,70,7, "Which ally (number)");
+          while(ally < 0 || ally >= party.size()){
+            TextBox(14,6,70,7, "Please input a valid number!");
             input = userInput(in);
-            ally = partyNames.indexOf(input);
+            ally = Integer.parseInt(input) - 1;
 
           }
           // TextBox(14, 3, 43, 7, preprompt);

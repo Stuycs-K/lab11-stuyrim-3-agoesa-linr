@@ -71,7 +71,7 @@ public class Boss extends Adventurer{
     return fireDamage() + " " + this.getName() + " used Chimera's wrath and dealth 8 damage to its opponents and lit them on fire for 5 turns!";
   }
     else {
-      return fireDamage() + " " +  this.getName() + " tried to use Chimera's wrath but they don't have the 15 rage required to use it: " + this.getSpecial() + " / 15. Instead " + attack(other);
+      return this.getName() + " tried to use Chimera's wrath but they don't have the 15 rage required to use it: " + this.getSpecial() + " / 15. Instead " + attack(other);
     }
     }
 
