@@ -13,7 +13,7 @@ public class Chimera extends Adventurer{
   }
 
   public Chimera(String name, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
-    this(name, 100, allies, new ArrayList<Adventurer>());
+    this(name, 99, allies, new ArrayList<Adventurer>());
   }
   public Chimera(String name, ArrayList<Adventurer> allies){
     this(name, allies, new ArrayList<Adventurer>());

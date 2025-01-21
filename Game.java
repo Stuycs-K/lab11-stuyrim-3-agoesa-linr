@@ -61,34 +61,27 @@ public class Game{
     String tempString = text;
 
     while (currentHeight < height) {
-        if (tempString.length() > width) {
-            drawText(tempString.substring(0, width), row + currentHeight, col);
-            tempString = tempString.substring(width);
-        } else {
-
-            String finalString = tempString;
-            while (finalString.length() < width) {
-                finalString += " ";
+            if (!tempString.isEmpty()) {
+                if (tempString.length() > width) {
+                    drawText(tempString.substring(0, width), row + currentHeight, col);
+                    tempString = tempString.substring(width);
+                } else {
+                    String finalString = tempString;
+                    while (finalString.length() < width) {
+                        finalString += " ";
+                    }
+                    drawText(finalString, row + currentHeight, col);
+                    tempString = "";
+                }
+            } else {
+                String blankLine = "";
+                for (int i = 0; i < width; i++) {
+                    blankLine += " ";
+                }
+                drawText(blankLine, row + currentHeight, col);
             }
-
-            drawText(finalString, row + currentHeight, col);
-            tempString = "";
-
+            currentHeight++;
         }
-
-        currentHeight++;
-
-    }
-
-
-    while (currentHeight < height) {
-        String spaces = ""; // Start with an empty string
-        for (int i = 0; i < width; i++) {
-            spaces += " "; // Add spaces to the blank line
-        }
-        drawText(spaces, row + currentHeight, col);
-        currentHeight++;
-    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -137,7 +130,7 @@ public class Game{
       for(int i = 0; i < party.size(); i ++){
         TextBox(startRow,10 + (i * (WIDTH/party.size())),18,1, (party.get(i)).getName());
         TextBox(startRow + 1, 10 + (i * (WIDTH/party.size())),18,1,"HP: " + colorByPercent((party.get(i)).getHP(), (party.get(i)).getmaxHP()));
-        Text.reset();
+        // Text.reset();
         TextBox(startRow + 2, 10 + (i * (WIDTH/party.size())), 18, 1, (party.get(i)).getSpecialName() + " : " + (party.get(i)).getSpecial());
       }
 
