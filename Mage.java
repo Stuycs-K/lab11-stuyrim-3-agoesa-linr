@@ -51,7 +51,7 @@ public class Mage extends Adventurer {
       return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage! Restores 2 aura.";
     }
     else {
-      return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. Restores 2 aura. ";
+      return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. Restores 3 aura. ";
     }
   }
 

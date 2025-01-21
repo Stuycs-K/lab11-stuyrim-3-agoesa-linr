@@ -83,7 +83,7 @@ public class Game{
     while (currentHeight < height) {
         String spaces = ""; // Start with an empty string
         for (int i = 0; i < width; i++) {
-            spaces += " $"; // Add spaces to the blank line
+            spaces += " "; // Add spaces to the blank line
         }
         drawText(spaces, row + currentHeight, col);
         currentHeight++;
@@ -132,10 +132,12 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
+
       for(int i = 0; i < party.size(); i ++){
-        drawText((party.get(i)).getName(), startRow, 10 + (i * (WIDTH/party.size())));
-        drawText("HP: " + colorByPercent((party.get(i)).getHP(), (party.get(i)).getmaxHP()), startRow + 1, 10 + (i * (WIDTH/party.size())));
-        drawText((party.get(i)).getSpecialName() + " : " + (party.get(i)).getSpecial(), startRow + 2, 10 + (i * (WIDTH/party.size())));
+        TextBox(startRow,10 + (i * (WIDTH/party.size())),15,1, (party.get(i)).getName());
+        TextBox(startRow + 1, 10 + (i * (WIDTH/party.size())),15,1,"HP: " + colorByPercent((party.get(i)).getHP(), (party.get(i)).getmaxHP()));
+        Text.reset();
+        TextBox(startRow + 2, 10 + (i * (WIDTH/party.size())), 15, 1, (party.get(i)).getSpecialName() + " : " + (party.get(i)).getSpecial());
       }
 
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
