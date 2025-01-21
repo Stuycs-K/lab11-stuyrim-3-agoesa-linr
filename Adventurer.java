@@ -179,10 +179,13 @@ public abstract class Adventurer{
   }
 
 // Enemies when stunned can't do anything
-  public void ifStunned(){
+  public boolean ifStunned(){
     if (getStun() > 0){
       setStun(getStun() - 1);
-      // make it skip a turn. THIS IS NOT DONE YET!!!!!
+      return true;
+    }
+    else {
+      return false; 
     }
 }
   public int getDamageBoost(){
@@ -216,11 +219,12 @@ public abstract class Adventurer{
     this.poison = n;
   }
   //reduces attack damage by 75% and deals 1 damage per turn
-  public void ifPoisoned(){
+  public String ifPoisoned(){
     if (getPoison() > 0){
       setPoison(getPoison() -1);
       this.applyDamage(1);
     }
+    return " " + this.getName() + " is poisoned! They lose 1 HP and their attack is weakened by 75% \n";
   }
-  //becareful of the status effects when applying damage, you already are decreasing the turns in the methods.
+
 }
