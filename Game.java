@@ -225,7 +225,7 @@ public class Game{
       enemies = createRandomParty(howManyEnemies);
     }
     else{
-      Adventurer Chimera = new Chimera("Chimera");
+      Adventurer Chimera = new Boss("Chimera");
       enemies.add(Chimera);
     }
 
