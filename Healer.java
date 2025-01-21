@@ -98,6 +98,10 @@ public class Healer extends Adventurer {
         getAllies().get(i).setHP((int) Math.min( getAllies().get(i).getmaxHP(),  getAllies().get(i).getHP() +  getAllies().get(i).getmaxHP()/2));
       }
         int damage = (int) (Math.random() * 3) + 2;
+        if (getDamageBoost() > 0){
+          damage *= 1.5;
+          setDamageBoost(getDamageBoost() - 1);
+        }
         other.applyDamage(2);
 
         return  fireDamage() + " " + this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "   points of damage to " + other + "!";

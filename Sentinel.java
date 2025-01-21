@@ -54,6 +54,10 @@ public class Sentinel extends Adventurer{
     }
     int damage = (int)(Math.random()*2) + 3; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
     fireDamage();
+    if (getDamageBoost() > 0){
+      damage *= 1.5;
+      setDamageBoost(getDamageBoost() - 1);
+    }
     other.applyDamage(damage);
     this.restoreSpecial(3);
     return  fireDamage() + "  " + this.getName() + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +

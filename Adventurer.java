@@ -185,7 +185,7 @@ public abstract class Adventurer{
       return true;
     }
     else {
-      return false; 
+      return false;
     }
 }
   public int getDamageBoost(){
