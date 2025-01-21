@@ -7,7 +7,7 @@ public class Mage extends Adventurer {
   public Mage(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies, enemies);
     auraMax = 16;
-    aura = auraMax;
+    aura = auraMax / 2;
   }
 
   public Mage(String name, ArrayList<Adventurer> allies){
