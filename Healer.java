@@ -110,7 +110,7 @@ public class Healer extends Adventurer {
         for (int i = 0; i < getAllies().size(); i++){
         getAllies().get(i).setHP((int) Math.min( getAllies().get(i).getmaxHP(),  getAllies().get(i).getHP() +  getAllies().get(i).getmaxHP()/4));
       }
-        int damage = (int) (Math.random() * 3) + 2;
+        int damage = ((int) (Math.random() * 3) + 2) / weakFactor;
         if (getDamageBoost() > 0){
           damage *= 1.5;
           setDamageBoost(getDamageBoost() - 1);
