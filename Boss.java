@@ -55,7 +55,7 @@ public class Boss extends Adventurer{
     this.restoreSpecial(1);
     other.setPoison(other.getPoison() + 2);
     return fireDamage() + " " + this.getName() + " attacked "+ other.getName() + " using Rampage and dealt "+ damage +
-    " points of damage and inflicted poison on them." ;
+    " points of damage and inflicted poison on them. Restores 1 Rage." ;
   }
 //"Chimera's wrath" Chimera does an AOE stomp, dealing 8 dmg to all enemies, while breathing fire, lighting all of its enemies on fire for 5 turns. 15 rage required.
   public String specialAttack(Adventurer other){
@@ -95,7 +95,7 @@ public class Boss extends Adventurer{
     this.setFire(0);
     this.setPoison(0);
     this.setStun(0);
-    return fireDamage() + " " + this.getName() + "healed " + health + "hp and nullified all its bad status effects!";
+    return fireDamage() + " " + this.getName() + "healed " + health + "hp and nullified all its bad status effects! Restores 1 Rage.";
 
   }
 }
