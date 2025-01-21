@@ -43,6 +43,9 @@ public class Healer extends Adventurer {
   }
 
   public String attack(Adventurer other){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     fireDamage();
     Random rand1 = new Random();
     int damage;
@@ -60,6 +63,9 @@ public class Healer extends Adventurer {
   }
 
   public String support(){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     fireDamage();
     int hpAdd = 7;
     int specialAdd = 3;
@@ -69,6 +75,9 @@ public class Healer extends Adventurer {
   }
 
   public String support(Adventurer other){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
 
     int hpAdd = 7;
     int specialAdd = 3;
@@ -78,6 +87,9 @@ public class Healer extends Adventurer {
   }
 
     public String specialAttack(Adventurer other){
+      if (ifStunned()){
+        return "" + this.getName() + " is stunned! Their turn is skipped.";
+      }
       if (getSpecial() > 10){
         setSpecial(Math.max(0, getSpecial() - 10));
         int hpSacrifice = getHP() / 4;
