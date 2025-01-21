@@ -107,10 +107,8 @@ public class Healer extends Adventurer {
     }
       if (getSpecial() > 10){
         setSpecial(Math.max(0, getSpecial() - 10));
-        int hpSacrifice = getHP() / 4;
-        setHP(getHP() - hpSacrifice);
         for (int i = 0; i < getAllies().size(); i++){
-        getAllies().get(i).setHP((int) Math.min( getAllies().get(i).getmaxHP(),  getAllies().get(i).getHP() +  getAllies().get(i).getmaxHP()/2));
+        getAllies().get(i).setHP((int) Math.min( getAllies().get(i).getmaxHP(),  getAllies().get(i).getHP() +  getAllies().get(i).getmaxHP()/4));
       }
         int damage = (int) (Math.random() * 3) + 2;
         if (getDamageBoost() > 0){
@@ -118,7 +116,7 @@ public class Healer extends Adventurer {
           setDamageBoost(getDamageBoost() - 1);
         }
         other.applyDamage(2);
-        return  this.fireDamage() + " " + this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
+        return  this.fireDamage() + " " + this + " uses Dark Blessing, healing their allies by 25% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
       }
       else {
         return  this.fireDamage() + " " + this + " does not have enough elixir! Instead " + attack(other);
