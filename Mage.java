@@ -38,7 +38,7 @@ public class Mage extends Adventurer {
   }
 
   public String attack(Adventurer other){
-    restoreSpecial(2);
+    restoreSpecial(3);
     int damage = (int) (Math.random() * 5) +  3;
     if (getDamageBoost() > 0){
       damage *= 1.5;
@@ -48,7 +48,7 @@ public class Mage extends Adventurer {
     Random rand1 = new Random();
     if (rand1.nextBoolean()){
       other.applyDamage(3);
-      return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage! Restores 2 aura.";
+      return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage! Restores 3 aura.";
     }
     else {
       return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. Restores 3 aura. ";

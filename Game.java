@@ -297,7 +297,14 @@ public class Game{
 
 
         //Process user input for the last Adventurer:
-        if(input.startsWith("attack") || input.startsWith("a")){
+        while(!input.equalsIgnoreCase("attack") && !input.equalsIgnoreCase("a") &&
+        !input.equalsIgnoreCase("special") && !input.equalsIgnoreCase("sp") &&
+        !(input.toLowerCase()).startsWith("support") && !(input.toLowerCase()).startsWith("su") &&
+        !input.equals("quit") && !input.equals("q")) {
+          TextBox(14,3,43,7, "Not a valid action, please try again: attack/special/support/quit");
+          input = userInput(in);
+        }
+        if(input.equalsIgnoreCase("attack") || input.equalsIgnoreCase("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           TextBox(14, 3, 43, 7, "Which opponent would you like to attack? (Name)");
@@ -324,7 +331,7 @@ public class Game{
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.startsWith("special") || input.startsWith("sp")){
+        else if(input.equalsIgnoreCase("special") || input.equalsIgnoreCase("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           TextBox(14, 3, 43, 7, "Which opponent would you like to special attack? (Name) ");
@@ -353,7 +360,7 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
           //THIS IS HOW YOU WANT TO DO THE OTHERS
-        else if(input.startsWith("su") || input.startsWith("support")){
+        else if((input.toLowerCase()).startsWith("su") || (input.toLowerCase()).startsWith("support")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -390,7 +397,7 @@ public class Game{
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see mo                         nster's turn";
+          String prompt = "press enter to see monster's turn";
           TextBox(14,3,43,7, prompt);
 
           partyTurn = false;
