@@ -70,6 +70,10 @@ public class Mage extends Adventurer {
       if (getSpecial() > 10){
         setSpecial(Math.min(0, getSpecial() - 10));
         int damage = (int) (Math.random() * 2) + 5;
+        if (getDamageBoost() > 0){
+          damage *= 1.5;
+          setDamageBoost(getDamageBoost() - 1);
+        }
         for (int i = 0; i < getEnemies().size(); i++){
           getEnemies().get(i).applyDamage(damage);
           getEnemies().get(i).setFire(3);

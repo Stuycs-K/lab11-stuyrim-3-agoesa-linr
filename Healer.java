@@ -50,11 +50,11 @@ public class Healer extends Adventurer {
       damage *= 1.5;
       setDamageBoost(getDamageBoost() - 1);
     }
+    restoreSpecial(3);
     other.applyDamage(damage);
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setHP(Math.min(getAllies().get(i).getmaxHP(), getAllies().get(i).getHP() + (damage)));
-    restoreSpecial(3);
-  }
+    }
     return this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + 2 * damage +" HP! " + this + " gains 3 elixir!";
   }
 
