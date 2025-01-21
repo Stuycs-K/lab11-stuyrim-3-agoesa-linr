@@ -201,15 +201,16 @@ public abstract class Adventurer{
     this.onFire = turns;
   }
 
-  public void fireDamage(){
+  public String fireDamage(){
     if (getFire() > 0){
       setFire(getFire()-1);
       this.applyDamage(1);
-      System.out.println(this + " is on fire! They lose 1 HP...");
+    return " " + this + " is on fire! They lose 1 HP \n";
     }
+    return "";
   }
   public int getPoison(){
-    return poison; 
+    return poison;
   }
   public void setPoison(int n){
     this.poison = n;

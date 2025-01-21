@@ -315,15 +315,15 @@ public class Game{
         if(input.equalsIgnoreCase("attack") || input.equalsIgnoreCase("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14, 3, 70, 7, "Which opponent would you like to attack? (Name)");
+          TextBox(14, 3, 70, 7, "Which opponent would you like to attack?");
           input = userInput(in);
           TextBox(14, 3, 43, 7, preprompt);
 
-          int enemy = enemyNames.indexOf(input);
+          int enemy = Integer.parseInt(input) - 1;
           while(enemy < 0){
-            TextBox(14,3,70,7, "Check your spelling, make sure capitalization is correct.");
+            TextBox(14,3,70,7, "Which opponent? (number)");
             input = userInput(in);
-            enemy = enemyNames.indexOf(input);
+            enemy = Integer.parseInt(input)-1;
 
           }
 
@@ -342,16 +342,16 @@ public class Game{
         else if(input.equalsIgnoreCase("special") || input.equalsIgnoreCase("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14, 3, 70, 7, "Which opponent would you like to special attack? (Name) ");
+          TextBox(14, 3, 70, 7, "Which opponent would you like to special attack? ");
           input = userInput(in);
           TextBox(14, 3, 70, 7, preprompt);
 
-          int enemy = enemyNames.indexOf(input);
+         int enemy = Integer.parseInt(input) - 1;
 
           while(enemy < 0){
-            TextBox(14,3,70,7, "Check your spelling, make sure capitalization is correct.");
+            TextBox(14,3,70,7, "Which opponent? (number) ");
             input = userInput(in);
-            enemy = enemyNames.indexOf(input);
+            enemy = Integer.parseInt(input) - 1;
 
           }
 
@@ -373,12 +373,12 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14, 3, 70, 7, "Which ally would you like to support? (Name)");
+          TextBox(14, 3, 70, 7, "Which ally would you like to support? ");
           input = userInput(in);
           TextBox(14, 3, 70, 7, preprompt);
-          int ally = partyNames.indexOf(input);
+          int ally = Integer.parseInt(input) - 1;
           while(ally < 0){
-            TextBox(14,3,70,7, "Check your spelling, make sure capitalization is correct.");
+            TextBox(14,3,70,7, "Which ally (number)");
             input = userInput(in);
             ally = partyNames.indexOf(input);
 

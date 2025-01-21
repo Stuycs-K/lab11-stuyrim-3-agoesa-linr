@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class Chimera extends Adventurer{
   private int rage;
-  private int rageMax; 
+  private int rageMax;
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public static int randomHP(){
@@ -24,7 +24,7 @@ public class Chimera extends Adventurer{
   public Chimera(String name){
     this(name, new ArrayList<Adventurer>());
   }
-  
+
   public Chimera(){
     this("Chimera");
   }
@@ -49,7 +49,7 @@ public class Chimera extends Adventurer{
 
 //"Rampage" Deals 6-10 dmg to one enemy, poisoning them for 2 turns, which reduces enemy attack damage by 75% and deals 1 damage per turn. Chimera gains 1 Rage.
   public String attack(Adventurer other){
-    int damage = (int)(Math.random()* 5) + 6; // 0 to 1 -> 0 to 5 -> 6 to 11 exclusive. 
+    int damage = (int)(Math.random()* 5) + 6; // 0 to 1 -> 0 to 5 -> 6 to 11 exclusive.
     other.applyDamage(damage);
     this.restoreSpecial(1);
     other.setPoison(other.getPoison() + 2);

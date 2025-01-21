@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class Sentinel extends Adventurer{
   private int fortitude;
-  private int fortitudeMax; 
+  private int fortitudeMax;
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public static int randomHP(){
@@ -24,7 +24,7 @@ public class Sentinel extends Adventurer{
   public Sentinel(String name){
     this(name, new ArrayList<Adventurer>());
   }
-  
+
   public Sentinel(){
     this("Sentinel");
   }
@@ -52,14 +52,14 @@ public class Sentinel extends Adventurer{
     int damage = (int)(Math.random()*2) + 3; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
     other.applyDamage(damage);
     this.restoreSpecial(3);
-    return this.getName() + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
+    return  fireDamage() + "\n" + this.getName() + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
     " points of damage.";
   }
 
   /* Stuns enemy up to 3 turns */
   public String specialAttack(Adventurer other){
     if (getSpecial() > 10){
-      setSpecial(Math.min(0, getSpecial() - 10));   
+      setSpecial(Math.min(0, getSpecial() - 10));
        int turns = (int) Math.random() * 100;
     if (turns > 75){
       turns = 3;
@@ -68,29 +68,29 @@ public class Sentinel extends Adventurer{
     else if (turns > 25){
       turns = 2;
       other.setStun(other.getStun() + turns);
-    } 
+    }
     else {
       turns = 1;
       other.setStun(other.getStun() + turns);
     }
-    return this.getName() + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
+    return  fireDamage() + "\n" + this.getName() + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
   }
     else {
-      return this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10";
+      return  fireDamage() + "\n" + this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10";
     }
 }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(Adventurer other){
     other.setProtect(other.getProtect() + 2);
     this.restoreSpecial(2);
-    return this.getName() + " used Guardian's Shield on " + other.getName() + "!";
+    return  fireDamage() + "\n" +  this.getName() + " used Guardian's Shield on " + other.getName() + "!";
 
   }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(){
     this.setProtect(this.getProtect() + 2);
     this.restoreSpecial(2);
-    return this.getName() + " used Guardian's Shield on" + this.getName() + "!";
+    return  fireDamage() + "\n" + this.getName() + " used Guardian's Shield on" + this.getName() + "!";
 
   }
 }
