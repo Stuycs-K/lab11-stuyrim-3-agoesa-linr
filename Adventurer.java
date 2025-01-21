@@ -10,6 +10,7 @@ public abstract class Adventurer{
   private int damageBoost;
   private int onFire;
   private int poison;
+  private int weakFactor;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -219,13 +220,13 @@ public abstract class Adventurer{
     this.poison = n;
   }
   //reduces attack damage by 75% and deals 1 damage per turn
-  public String ifPoisoned(){
+  public boolean ifPoisoned(){
     if (getPoison() > 0){
       setPoison(getPoison() -1);
-      this.applyDamage(1);return " " + this.getName() + " is poisoned! They lose 1 HP and their attack is weakened by 75% \n";
+      return true;
     }
     else{
-    return "";
+    return false;
     }
   }
 
