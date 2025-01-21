@@ -71,15 +71,21 @@ public class Chimera extends Adventurer{
     }
     }
 
-}
+
 
   public String support(Adventurer other){
-    
+    return support();
 
   }
   //"Limitless adaptation"Chimera heals itself for 25% of its current HP and nullifies all of its bad status effects. Gains 1 rage.
   public String support(){
-    
+    int health = this.getHP() / 4;
+    this.setHP(health);
+    this.restoreSpecial(1);
+    this.setFire(0);
+    this.setPoison(0);
+    this.setStun(0);
+    return this.getName() + "healed " + health + "hp and nullified all its bad status effects!";
 
   }
 }
