@@ -15,6 +15,13 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
+## List of Features:
+
+- Basic actions of each subclass :white_check_mark:
++ Boss :white_check_mark:
+* Targets multiple characters :ballot_box_with_check:
+- Running the game in terminal :white_check_mark:
+- Status effects that effects other characters for multiple turns :ballot_box_with_check:
 
 ## Adventurer Subclasses
 
