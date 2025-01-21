@@ -11,7 +11,7 @@ public class Mage extends Adventurer {
   }
 
   public Mage(String name, ArrayList<Adventurer> allies){
-    this(name, (int) Math.random() * 3 + 20, allies, new ArrayList<Adventurer>());
+    this(name, (int) ((Math.random() * 3) + 20), allies, new ArrayList<Adventurer>());
   }
 
   public Mage(String name){
