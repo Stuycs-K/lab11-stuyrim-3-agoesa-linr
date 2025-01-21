@@ -266,7 +266,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-      String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+      String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
 
 
 
@@ -275,7 +275,7 @@ public class Game{
 
 
       if(partyTurn){
-        preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+        preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
         TextBox(14, 3, 43, 7, preprompt);
       }
 
@@ -330,6 +330,13 @@ public class Game{
 
           int enemy = enemyNames.indexOf(input);
 
+          while(enemy < 0){
+            TextBox(14,3,43,7, "Check your spelling, make sure capitalization is correct.");
+            input = userInput(in);
+            enemy = enemyNames.indexOf(input);
+
+          }
+
           TextBox(22,4,35,7,party.get(whichPlayer).specialAttack(enemies.get(enemy)));
           if((enemies.get(enemy)).getHP()<=0){
             String dead = enemyNames.get(enemy);
@@ -352,6 +359,12 @@ public class Game{
           input = userInput(in);
           TextBox(14, 3, 43, 7, preprompt);
           int ally = partyNames.indexOf(input);
+          while(ally < 0){
+            TextBox(14,3,43,7, "Check your spelling, make sure capitalization is correct.");
+            input = userInput(in);
+            ally = enemyNames.indexOf(input);
+
+          }
           // TextBox(14, 3, 43, 7, preprompt);
           TextBox(22,4,35,7,party.get(whichPlayer).support(party.get(ally)));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -366,7 +379,7 @@ public class Game{
           //This is a player turn.
           //Decide where to draw the following prompt:
 
-          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
           whichPlayer++;
 
 
@@ -435,7 +448,7 @@ public class Game{
         turn++;
         partyTurn=true;
         //display this prompt before player's turn
-        String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+        String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
         TextBox(14, 3, 43, 7, prompt);
       }
 
