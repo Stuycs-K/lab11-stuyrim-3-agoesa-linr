@@ -38,7 +38,7 @@ public class Mage extends Adventurer {
   }
 
   public String attack(Adventurer other){
-    restoreSpecial(3);
+    restoreSpecial(2);
     int damage = (int) (Math.random() * 5) +  3;
     if (getDamageBoost() > 0){
       damage *= 1.5;
