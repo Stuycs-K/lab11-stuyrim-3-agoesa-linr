@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 public class Game{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
@@ -99,7 +100,7 @@ public class Game{
     public static Adventurer createRandomAdventurer(){
       ArrayList<Adventurer> party = new ArrayList<Adventurer>();
       Adventurer Healer = new Healer("Healer");
-      Adventurer Sentinel = new CodeWarrior ("Sentinel");
+      Adventurer Sentinel = new Sentinel("Sentinel");
       Adventurer Mage = new Mage("Mage");
 
       party.add(Healer);

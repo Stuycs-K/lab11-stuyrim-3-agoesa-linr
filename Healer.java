@@ -6,8 +6,9 @@ public class Healer extends Adventurer {
 
   public Healer(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies, enemies);
-    elixir = 16;
-    elixirMax = elixir/2;
+    elixirMax = 16;
+    elixir = elixirMax / 2;
+
   }
 
   public Healer(String name, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
@@ -50,12 +51,12 @@ public class Healer extends Adventurer {
       damage *= 1.5;
       setDamageBoost(getDamageBoost() - 1);
     }
+    restoreSpecial(3);
     other.applyDamage(damage);
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setHP(Math.min(getAllies().get(i).getmaxHP(), getAllies().get(i).getHP() + (damage)));
-    restoreSpecial(3);
-  }
-    return this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + 2 * damage +" HP! " + this + " gains 3 elixir!";
+    }
+    return this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + damage +" HP! " + this + " gains 3 elixir!";
   }
 
   public String support(){

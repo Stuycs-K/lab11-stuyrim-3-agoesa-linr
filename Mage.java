@@ -7,7 +7,7 @@ public class Mage extends Adventurer {
   public Mage(String name, int hp, ArrayList<Adventurer> allies, ArrayList<Adventurer> enemies){
     super(name, hp, allies, enemies);
     auraMax = 16;
-    aura = auraMax;
+    aura = auraMax / 2;
   }
 
   public Mage(String name, ArrayList<Adventurer> allies){
@@ -38,7 +38,7 @@ public class Mage extends Adventurer {
   }
 
   public String attack(Adventurer other){
-    restoreSpecial(3);
+    restoreSpecial(2);
     int damage = (int) (Math.random() * 5) +  3;
     if (getDamageBoost() > 0){
       damage *= 1.5;
@@ -70,6 +70,10 @@ public class Mage extends Adventurer {
       if (getSpecial() > 10){
         setSpecial(Math.min(0, getSpecial() - 10));
         int damage = (int) (Math.random() * 2) + 5;
+        if (getDamageBoost() > 0){
+          damage *= 1.5;
+          setDamageBoost(getDamageBoost() - 1);
+        }
         for (int i = 0; i < getEnemies().size(); i++){
           getEnemies().get(i).applyDamage(damage);
           getEnemies().get(i).setFire(3);
