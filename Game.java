@@ -135,10 +135,10 @@ public class Game{
       //YOUR CODE HERE
 
       for(int i = 0; i < party.size(); i ++){
-        TextBox(startRow,10 + (i * (WIDTH/party.size())),15,1, (party.get(i)).getName());
-        TextBox(startRow + 1, 10 + (i * (WIDTH/party.size())),15,1,"HP: " + colorByPercent((party.get(i)).getHP(), (party.get(i)).getmaxHP()));
+        TextBox(startRow,10 + (i * (WIDTH/party.size())),18,1, (party.get(i)).getName());
+        TextBox(startRow + 1, 10 + (i * (WIDTH/party.size())),18,1,"HP: " + colorByPercent((party.get(i)).getHP(), (party.get(i)).getmaxHP()));
         Text.reset();
-        TextBox(startRow + 2, 10 + (i * (WIDTH/party.size())), 15, 1, (party.get(i)).getSpecialName() + " : " + (party.get(i)).getSpecial());
+        TextBox(startRow + 2, 10 + (i * (WIDTH/party.size())), 18, 1, (party.get(i)).getSpecialName() + " : " + (party.get(i)).getSpecial());
       }
 
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -195,7 +195,7 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(17,3);
+      Text.go(17,6);
 
       //show cursor
       Text.showCursor();
@@ -287,7 +287,7 @@ public class Game{
 
       if(partyTurn){
         preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
-        TextBox(14, 3, 70, 7, preprompt);
+        TextBox(14, 6, 70, 7, preprompt);
       }
 
 
@@ -309,25 +309,25 @@ public class Game{
         !input.equalsIgnoreCase("special") && !input.equalsIgnoreCase("sp") &&
         !(input.toLowerCase()).startsWith("support") && !(input.toLowerCase()).startsWith("su") &&
         !input.equals("quit") && !input.equals("q")) {
-          TextBox(14,3,70,7, "Not a valid action, please try again: attack/special/support/quit");
+          TextBox(14,6,70,7, "Not a valid action, please try again: attack/special/support/quit");
           input = userInput(in);
         }
         if(input.equalsIgnoreCase("attack") || input.equalsIgnoreCase("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14, 3, 70, 7, "Which opponent would you like to attack?");
+          TextBox(14,6, 70, 7, "Which opponent would you like to attack?");
           input = userInput(in);
-          TextBox(14, 3, 43, 7, preprompt);
+          TextBox(14, 6, 70, 7, preprompt);
 
           int enemy = Integer.parseInt(input) - 1;
           while(enemy < 0){
-            TextBox(14,3,70,7, "Which opponent? (number)");
+            TextBox(14,6,70,7, "Which opponent? (number)");
             input = userInput(in);
             enemy = Integer.parseInt(input)-1;
 
           }
 
-          TextBox(22,4,70,7,party.get(whichPlayer).attack(enemies.get(enemy)));
+          TextBox(22,6,70,7,party.get(whichPlayer).attack(enemies.get(enemy)));
           if((enemies.get(enemy)).getHP()<=0){
             String dead = enemyNames.get(enemy);
             enemies.remove(enemies.get(enemy));
@@ -335,27 +335,27 @@ public class Game{
 
             Text.clear();
             drawScreen(party, enemies);
-            TextBox(22,4,70,7, dead + " has been defeated!");
+            TextBox(22,6,70,7, dead + " has been defeated!");
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equalsIgnoreCase("special") || input.equalsIgnoreCase("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14, 3, 70, 7, "Which opponent would you like to special attack? ");
+          TextBox(14, 6, 70, 7, "Which opponent would you like to special attack? ");
           input = userInput(in);
-          TextBox(14, 3, 70, 7, preprompt);
+          TextBox(14, 6, 70, 7, preprompt);
 
          int enemy = Integer.parseInt(input) - 1;
 
           while(enemy < 0){
-            TextBox(14,3,70,7, "Which opponent? (number) ");
+            TextBox(14,6,70,7, "Which opponent? (number) ");
             input = userInput(in);
             enemy = Integer.parseInt(input) - 1;
 
           }
 
-          TextBox(22,4,70,7,party.get(whichPlayer).specialAttack(enemies.get(enemy)));
+          TextBox(22,6,70,7,party.get(whichPlayer).specialAttack(enemies.get(enemy)));
           if((enemies.get(enemy)).getHP()<=0){
             String dead = enemyNames.get(enemy);
             enemies.remove(enemies.get(enemy));
@@ -363,7 +363,7 @@ public class Game{
 
             Text.clear();
             drawScreen(party, enemies);
-            TextBox(22,4,35,7, dead + " has been defeated!");
+            TextBox(22,6,35,7, dead + " has been defeated!");
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
@@ -373,18 +373,18 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          TextBox(14, 3, 70, 7, "Which ally would you like to support? ");
+          TextBox(14, 6, 70, 7, "Which ally would you like to support? ");
           input = userInput(in);
-          TextBox(14, 3, 70, 7, preprompt);
+          TextBox(14, 6, 70, 7, preprompt);
           int ally = Integer.parseInt(input) - 1;
           while(ally < 0){
-            TextBox(14,3,70,7, "Which ally (number)");
+            TextBox(14,6,70,7, "Which ally (number)");
             input = userInput(in);
             ally = partyNames.indexOf(input);
 
           }
           // TextBox(14, 3, 43, 7, preprompt);
-          TextBox(22,4,70,7,party.get(whichPlayer).support(party.get(ally)));
+          TextBox(22,6,70,7,party.get(whichPlayer).support(party.get(ally)));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
@@ -406,7 +406,7 @@ public class Game{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "press enter to see monster's turn";
-          TextBox(14,3,70,7, prompt);
+          TextBox(14,6,70,7, prompt);
 
           partyTurn = false;
           whichOpponent = 0;
@@ -425,10 +425,12 @@ public class Game{
         int randomAlly = (int)(Math.random() * (party.size()));
         int randomAction = (int)(Math.random() * 2);
         if(randomAction == 0){
-          TextBox(22,4,70,7,(enemies.get(whichOpponent).attack(party.get(randomAlly))));
+          
+          TextBox(22,6,70,7,(enemies.get(whichOpponent).attack(party.get(randomAlly))));
         }
         if(randomAction == 1){
-          TextBox(22,4,70,7,(enemies.get(whichOpponent).specialAttack(party.get(randomAlly))));
+
+          TextBox(22,6,70,7,(enemies.get(whichOpponent).specialAttack(party.get(randomAlly))));
         }
         if((party.get(randomAlly)).getHP()<=0){
           String dead = (party.get(randomAlly)).getName();
@@ -437,7 +439,7 @@ public class Game{
 
           Text.clear();
           drawScreen(party, enemies);
-          TextBox(22,4,70,7, dead + " has been defeated!");
+          TextBox(22,6,70,7, dead + " has been defeated!");
         }
 
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -467,7 +469,7 @@ public class Game{
         partyTurn=true;
         //display this prompt before player's turn
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
-        TextBox(14, 3, 70, 7, prompt);
+        TextBox(14, 6, 70, 7, prompt);
       }
 
       //display the updated screen after input has been processed.
@@ -479,12 +481,12 @@ public class Game{
     }//end of main game loop
     if(party.size() == 0){
       Text.clear();
-      TextBox(14, 3, 70, 7, "YOU LOSE");
+      TextBox(14, 6, 70, 7, "YOU LOSE");
 
     }
     if(enemies.size() == 0){
       Text.clear();
-      TextBox(14, 3, 70, 7, "YOU WIN");
+      TextBox(14, 6, 70, 7, "YOU WIN");
 
 
     //After quit reset things:

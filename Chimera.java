@@ -51,7 +51,7 @@ public class Chimera extends Adventurer{
     other.applyDamage(damage);
     this.restoreSpecial(1);
     other.setPoison(other.getPoison() + 2);
-    return this.getName() + " attacked "+ other.getName() + " using Rampage and dealt "+ damage +
+    return fireDamage() + " " + this.getName() + " attacked "+ other.getName() + " using Rampage and dealt "+ damage +
     " points of damage and inflicted poison on them." ;
   }
 //"Chimera's wrath" Chimera does an AOE stomp, dealing 8 dmg to all enemies, while breathing fire, lighting all of its enemies on fire for 5 turns. 15 rage required.
@@ -62,10 +62,10 @@ public class Chimera extends Adventurer{
         getEnemies().get(i).setFire(getEnemies().get(i).getFire() + 5);
     }
     this.setSpecial(this.getSpecial() - 15);
-    return this.getName() + " used Chimera's wrath and dealth 8 damage to its opponents and lit them on fire for 5 turns!";
+    return fireDamage() + " " + this.getName() + " used Chimera's wrath and dealth 8 damage to its opponents and lit them on fire for 5 turns!";
   }
     else {
-      return this.getName() + " tried to use Chimera's wrath but they don't have the 15 rage required to use it: " + this.getSpecial() + " / 15. Instead " + attack(other);
+      return fireDamage() + " " +  this.getName() + " tried to use Chimera's wrath but they don't have the 15 rage required to use it: " + this.getSpecial() + " / 15. Instead " + attack(other);
     }
     }
 
@@ -83,7 +83,7 @@ public class Chimera extends Adventurer{
     this.setFire(0);
     this.setPoison(0);
     this.setStun(0);
-    return this.getName() + "healed " + health + "hp and nullified all its bad status effects!";
+    return fireDamage() + " " + this.getName() + "healed " + health + "hp and nullified all its bad status effects!";
 
   }
 }

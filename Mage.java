@@ -49,10 +49,10 @@ public class Mage extends Adventurer {
     Random rand1 = new Random();
     if (rand1.nextBoolean()){
       other.applyDamage(3);
-      return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage! Restores 3 aura.";
+      return fireDamage() + " " + this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. A bolt of lightning strikes! It deals 3 extra damage! Restores 3 aura.";
     }
     else {
-      return this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. Restores 3 aura. ";
+      return fireDamage() + " " + this + " uses Thunderbolt on " + other + " and dealt " + damage + " points of damage. Restores 3 aura. ";
     }
   }
 
@@ -61,7 +61,7 @@ public class Mage extends Adventurer {
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setDamageBoost(3);
   }
-    return this + " uses Elemental Surge, giving their teammates a damage boost! Restores 2 aura.";
+    return fireDamage() +  " " + this + " uses Elemental Surge, giving their teammates a damage boost! Restores 2 aura.";
   }
 
   public String support(Adventurer other){
@@ -81,10 +81,10 @@ public class Mage extends Adventurer {
           getEnemies().get(i).applyDamage(damage);
           getEnemies().get(i).setFire(3);
         }
-        return this + " uses Inferno Blast, dealing " + damage + " damage to each enemy, lighting them on fire!";
+        return fireDamage() + " " + this + " uses Inferno Blast, dealing " + damage + " damage to each enemy, lighting them on fire!";
       }
       else {
-        return this + " does not have enough aura! Instead " + attack(other);
+        return fireDamage() + " " + this + " does not have enough aura! Instead " + attack(other);
       }
     }
 }

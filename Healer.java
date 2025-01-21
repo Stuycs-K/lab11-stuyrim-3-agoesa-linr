@@ -56,7 +56,7 @@ public class Healer extends Adventurer {
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setHP(Math.min(getAllies().get(i).getmaxHP(), getAllies().get(i).getHP() + (damage)));
     }
-    return this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + damage +" HP! " + this + " gains 3 elixir!";
+    return fireDamage() + " " + this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + damage +" HP! " + this + " gains 3 elixir!";
   }
 
   public String support(){
@@ -65,7 +65,7 @@ public class Healer extends Adventurer {
     int specialAdd = 3;
     setHP(Math.min(getmaxHP(), getHP() + hpAdd));
     restoreSpecial(3);
-    return this + " meditates and restores " + hpAdd + "HP and " + specialAdd + " elixir!";
+    return fireDamage() + " " + this + " meditates and restores " + hpAdd + "HP and " + specialAdd + " elixir!";
   }
 
   public String support(Adventurer other){
@@ -74,7 +74,7 @@ public class Healer extends Adventurer {
     int specialAdd = 3;
     other.setHP(Math.min(other.getmaxHP(), other.getHP() + hpAdd));
     other.restoreSpecial(3);
-    return fireDamage() + "\n" + this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their" + other.getSpecialName() +  " by " + specialAdd + " elixir!";
+    return fireDamage() + " " + this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their" + other.getSpecialName() +  " by " + specialAdd + " elixir!";
   }
 
     public String specialAttack(Adventurer other){
@@ -88,10 +88,10 @@ public class Healer extends Adventurer {
         int damage = (int) (Math.random() * 3) + 2;
         other.applyDamage(2);
 
-        return  fireDamage() + "\n" + this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
+        return  fireDamage() + " " + this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
       }
       else {
-        return  fireDamage() + "\n" + this + " does not have enough elixir! Instead " + attack(other);
+        return  fireDamage() + " " + this + " does not have enough elixir! Instead " + attack(other);
       }
     }
 }

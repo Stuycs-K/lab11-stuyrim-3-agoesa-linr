@@ -53,7 +53,7 @@ public class Sentinel extends Adventurer{
     fireDamage();
     other.applyDamage(damage);
     this.restoreSpecial(3);
-    return  fireDamage() + "\n" + this.getName() + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
+    return  fireDamage() + "  " + this.getName() + " attacked "+ other.getName() + " using Rock Slam and dealt "+ damage +
     " points of damage.";
   }
 
@@ -75,10 +75,10 @@ public class Sentinel extends Adventurer{
       turns = 1;
       other.setStun(other.getStun() + turns);
     }
-    return  fireDamage() + "\n" + this.getName() + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
+    return  fireDamage() + "  " + this.getName() + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
   }
     else {
-      return  fireDamage() + "\n" + this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10";
+      return  fireDamage() + "  " + this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10";
 
     }
 }
@@ -87,7 +87,7 @@ public class Sentinel extends Adventurer{
     fireDamage();
     other.setProtect(other.getProtect() + 2);
     this.restoreSpecial(2);
-    return  fireDamage() + "\n" +  this.getName() + " used Guardian's Shield on " + other.getName() + "!";
+    return  fireDamage() + "  " +  this.getName() + " used Guardian's Shield on " + other.getName() + "!";
 
   }
   /*Absorbs damage done to teamates for 2 turns*/
@@ -95,7 +95,7 @@ public class Sentinel extends Adventurer{
     fireDamage();
     this.setProtect(this.getProtect() + 2);
     this.restoreSpecial(2);
-    return  fireDamage() + "\n" + this.getName() + " used Guardian's Shield on" + this.getName() + "!";
+    return  fireDamage() + "  " + this.getName() + " used Guardian's Shield on" + this.getName() + "!";
 
   }
 }

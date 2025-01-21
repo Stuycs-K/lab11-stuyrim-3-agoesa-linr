@@ -205,7 +205,7 @@ public abstract class Adventurer{
     if (getFire() > 0){
       setFire(getFire()-1);
       this.applyDamage(1);
-    return " " + this + " is on fire! They lose 1 HP \n";
+    return " " + this + " is on fire! They lose 2 HP.";
     }
     return "";
   }
