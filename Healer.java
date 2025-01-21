@@ -43,13 +43,20 @@ public class Healer extends Adventurer {
   }
 
   public String attack(Adventurer other){
-    if (ifStunned()){
+    if (this.ifStunned()){
       return "" + this.getName() + " is stunned! Their turn is skipped.";
     }
-    fireDamage();
+    int weakFactor;
+    if (this.ifPoisoned()){
+      this.applyDamage(1);
+      weakFactor = 4;
+    }
+    else {
+      weakFactor = 1;
+    }
     Random rand1 = new Random();
     int damage;
-    damage = rand1.nextInt(3) + 1;
+    damage = (rand1.nextInt(3) + 1) / weakFactor;
     if (getDamageBoost() > 0){
       damage *= 1.5;
       setDamageBoost(getDamageBoost() - 1);
@@ -59,23 +66,23 @@ public class Healer extends Adventurer {
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setHP(Math.min(getAllies().get(i).getmaxHP(), getAllies().get(i).getHP() + (damage)));
     }
-    return fireDamage() + " " + this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + damage +" HP! " + this + " gains 3 elixir!";
+    return this.fireDamage() + " " + this + " uses Divine Strike on " + other + " and dealt " + damage + " points of damage, healing their allies by " + damage +" HP! " + this + " gains 3 elixir!";
   }
 
   public String support(){
-    if (ifStunned()){
+    if (this.ifStunned()){
       return "" + this.getName() + " is stunned! Their turn is skipped.";
     }
-    fireDamage();
+
     int hpAdd = 7;
     int specialAdd = 3;
     setHP(Math.min(getmaxHP(), getHP() + hpAdd));
     restoreSpecial(3);
-    return fireDamage() + " " + this + " meditates and restores " + hpAdd + "HP and " + specialAdd + " elixir!";
+    return this.fireDamage() + " " + this + " meditates and restores " + hpAdd + "HP and " + specialAdd + " elixir!";
   }
 
   public String support(Adventurer other){
-    if (ifStunned()){
+    if (this.ifStunned()){
       return "" + this.getName() + " is stunned! Their turn is skipped.";
     }
 
@@ -83,13 +90,21 @@ public class Healer extends Adventurer {
     int specialAdd = 3;
     other.setHP(Math.min(other.getmaxHP(), other.getHP() + hpAdd));
     other.restoreSpecial(3);
-    return fireDamage() + " " + this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their" + other.getSpecialName() +  " by " + specialAdd + " elixir!";
+    return this.fireDamage() + " " + this + " meditates and restores " + other + "'s HP by " + hpAdd + " and their" + other.getSpecialName() +  " by " + specialAdd + " elixir!";
   }
 
     public String specialAttack(Adventurer other){
-      if (ifStunned()){
+      if (this.ifStunned()){
         return "" + this.getName() + " is stunned! Their turn is skipped.";
       }
+      int weakFactor;
+    if (this.ifPoisoned()){
+      this.applyDamage(1);
+      weakFactor = 4;
+    }
+    else {
+      weakFactor = 1;
+    }
       if (getSpecial() > 10){
         setSpecial(Math.max(0, getSpecial() - 10));
         int hpSacrifice = getHP() / 4;
@@ -97,13 +112,13 @@ public class Healer extends Adventurer {
         for (int i = 0; i < getAllies().size(); i++){
         getAllies().get(i).setHP((int) Math.min( getAllies().get(i).getmaxHP(),  getAllies().get(i).getHP() +  getAllies().get(i).getmaxHP()/2));
       }
-        int damage = (int) (Math.random() * 3) + 2;
-        other.applyDamage(2);
+        int damage = ((int) (Math.random() * 3) + 2) / weakFactor;
+        other.applyDamage(damage);
 
-        return  fireDamage() + " " + this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
+        return  this.fireDamage() + " " + this + " uses Dark Blessing, sacrificing 25% of their health, healing their allies by 50% of their max HP and dealing " + damage + "   points of damage to " + other + "!";
       }
       else {
-        return  fireDamage() + " " + this + " does not have enough elixir! Instead " + attack(other);
+        return  this.fireDamage() + " " + this + " does not have enough elixir! Instead " + attack(other);
       }
     }
 }
