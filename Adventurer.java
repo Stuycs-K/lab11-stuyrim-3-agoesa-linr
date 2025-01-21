@@ -9,6 +9,7 @@ public abstract class Adventurer{
   private int protect;
   private int damageBoost;
   private int onFire;
+  private int poison;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -177,7 +178,7 @@ public abstract class Adventurer{
     this.protect = n;
   }
 
-// enemies when stunned can't do anything
+// Enemies when stunned can't do anything
   public void ifStunned(){
     if (getStun() > 0){
       setStun(getStun() - 1);
@@ -206,5 +207,8 @@ public abstract class Adventurer{
       applyDamage(1);
       System.out.println(this + " is on fire! They lose 1 HP...");
     }
+  }
+  public int void getPoison(){
+    return poison; 
   }
 }
