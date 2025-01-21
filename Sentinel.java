@@ -49,6 +49,9 @@ public class Sentinel extends Adventurer{
 
   /*Deals 3 - 4 damage to a target*/
   public String attack(Adventurer other){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     int damage = (int)(Math.random()*2) + 3; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
     fireDamage();
     other.applyDamage(damage);
@@ -59,6 +62,9 @@ public class Sentinel extends Adventurer{
 
   /* Stuns enemy up to 3 turns */
   public String specialAttack(Adventurer other){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     fireDamage();
     if (getSpecial() > 10){
       setSpecial(Math.min(0, getSpecial() - 10));
@@ -84,6 +90,9 @@ public class Sentinel extends Adventurer{
 }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(Adventurer other){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     fireDamage();
     other.setProtect(other.getProtect() + 2);
     this.restoreSpecial(2);
@@ -92,6 +101,9 @@ public class Sentinel extends Adventurer{
   }
   /*Absorbs damage done to teamates for 2 turns*/
   public String support(){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     fireDamage();
     this.setProtect(this.getProtect() + 2);
     this.restoreSpecial(2);
