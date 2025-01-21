@@ -52,8 +52,16 @@ public class Sentinel extends Adventurer{
     if (ifStunned()){
       return "" + this.getName() + " is stunned! Their turn is skipped.";
     }
-    int damage = (int)(Math.random()*2) + 3; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
-    fireDamage();
+    int weakFactor;
+    if (this.ifPoisoned()){
+      this.applyDamage(1);
+      weakFactor = 4;
+    }
+    else {
+      weakFactor = 1;
+    }
+    int damage = ((int)(Math.random()*2) + 3) / weakFactor; // 0 to 1 -> 0 to 2 -> 3 inclusive to 5 exclusive
+  
     if (getDamageBoost() > 0){
       damage *= 1.5;
       setDamageBoost(getDamageBoost() - 1);
@@ -69,7 +77,7 @@ public class Sentinel extends Adventurer{
     if (ifStunned()){
       return "" + this.getName() + " is stunned! Their turn is skipped.";
     }
-    fireDamage();
+    
     if (getSpecial() > 10){
       setSpecial(Math.min(0, getSpecial() - 10));
        int turns = (int) Math.random() * 100;
@@ -97,7 +105,7 @@ public class Sentinel extends Adventurer{
     if (ifStunned()){
       return "" + this.getName() + " is stunned! Their turn is skipped.";
     }
-    fireDamage();
+    
     other.setProtect(other.getProtect() + 2);
     this.restoreSpecial(2);
     return  fireDamage() + "  " +  this.getName() + " used Guardian's Shield on " + other.getName() + "!";
@@ -108,7 +116,7 @@ public class Sentinel extends Adventurer{
     if (ifStunned()){
       return "" + this.getName() + " is stunned! Their turn is skipped.";
     }
-    fireDamage();
+    
     this.setProtect(this.getProtect() + 2);
     this.restoreSpecial(2);
     return  fireDamage() + "  " + this.getName() + " used Guardian's Shield on" + this.getName() + "!";
