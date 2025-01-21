@@ -38,6 +38,9 @@ public class Mage extends Adventurer {
   }
 
   public String attack(Adventurer other){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     fireDamage();
     restoreSpecial(3);
     int damage = (int) (Math.random() * 5) +  3;
@@ -57,6 +60,9 @@ public class Mage extends Adventurer {
   }
 
   public String support(){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     fireDamage();
     for (int i = 0; i < getAllies().size(); i++){
     getAllies().get(i).setDamageBoost(3);
@@ -65,10 +71,16 @@ public class Mage extends Adventurer {
   }
 
   public String support(Adventurer other){
+    if (ifStunned()){
+      return "" + this.getName() + " is stunned! Their turn is skipped.";
+    }
     return support();
   }
 
     public String specialAttack(Adventurer other){
+      if (ifStunned()){
+        return "" + this.getName() + " is stunned! Their turn is skipped.";
+      }
       fireDamage();
       if (getSpecial() > 10){
         setSpecial(Math.min(0, getSpecial() - 10));
