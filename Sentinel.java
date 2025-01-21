@@ -76,7 +76,7 @@ public class Sentinel extends Adventurer{
     return this.getName() + " used Iron Earthquake on " + other.getName() + " and stunned them for " + turns + " turns";
   }
     else {
-      return this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10";
+      return this.getName() + " tried to use Iron Earthquake but they don't have the 10 fortitude required to use it: " + this.getSpecial() + " / 10. Instead " + attack(other);
     }
 }
   /*Absorbs damage done to teamates for 2 turns*/
