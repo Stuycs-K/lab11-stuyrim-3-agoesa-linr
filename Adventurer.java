@@ -9,6 +9,7 @@ public abstract class Adventurer{
   private int protect;
   private int damageBoost;
   private int onFire;
+  private int poison;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -177,7 +178,7 @@ public abstract class Adventurer{
     this.protect = n;
   }
 
-// enemies when stunned can't do anything
+// Enemies when stunned can't do anything
   public void ifStunned(){
     if (getStun() > 0){
       setStun(getStun() - 1);
@@ -203,8 +204,22 @@ public abstract class Adventurer{
   public void fireDamage(){
     if (getFire() > 0){
       setFire(getFire()-1);
-      applyDamage(1);
+      this.applyDamage(1);
       System.out.println(this + " is on fire! They lose 1 HP...");
     }
   }
+  public int getPoison(){
+    return poison; 
+  }
+  public void setPoison(int n){
+    this.poison = n;
+  }
+  //reduces attack damage by 75% and deals 1 damage per turn
+  public void ifPoisoned(){
+    if (getPoison() > 0){
+      setPoison(getPoison() -1);
+      this.applyDamage(1);
+    }
+  }
+  //becareful of the status effects when applying damage, you already are decreasing the turns in the methods.
 }
